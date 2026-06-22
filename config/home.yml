@@ -1,0 +1,183 @@
+- name: Home
+  columns:
+    - size: small
+      widgets:
+        - type: monitor
+          cache: 8m
+          title: Media frontends
+          sites:
+            - title: jellyfin
+              url: https://jellyfin.${GROUND_DOMAIN}
+              icon: /assets/icons/jellyfin.svg
+            - title: Seerr
+              url: https://seerr.${GROUND_DOMAIN}
+              icon: /assets/icons/seerr.svg
+
+        - type: monitor
+          cache: 8m
+          title: Privacy frontends
+          sites:
+            - title: Anonymous overflow
+              url: https://anonymous-overflow.${GROUND_DOMAIN}
+              icon: /assets/icons/anonymousoverflow.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+            - title: Breezewiki
+              url: https://breezewiki.${GROUND_DOMAIN}
+              icon: /assets/icons/fandom.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+
+    - size: small
+      widgets:
+        - type: monitor
+          cache: 8m
+          title: Sync services
+          sites:
+            - title: Atuin
+              url: https://atuin.${GROUND_DOMAIN}
+              icon: /assets/icons/atuin.svg
+            - title: Firefox sync
+              url: https://firefox-sync.${GROUND_DOMAIN}
+              icon: /assets/icons/firefox.svg
+
+        - type: monitor
+          cache: 8m
+          title: Other
+          sites:
+            - title: Vaultwarden
+              url: https://vaultwarden.${GROUND_DOMAIN}
+              icon: /assets/icons/vaultwarden.svg
+            - title: Authentik
+              url: https://authentik.${GROUND_DOMAIN}
+              icon: /assets/icons/authentik.svg
+            - title: Speedtest
+              url: https://speedtest.${GROUND_DOMAIN}
+              icon: /assets/icons/speedtest.svg
+
+        - type: monitor
+          cache: 8m
+          title: Notifications
+          sites:
+            - title: Gotify
+              url: https://gotify.${GROUND_DOMAIN}
+              icon: /assets/icons/gotify.svg
+            - title: Apprise
+              url: https://apprise.${GROUND_DOMAIN}
+              icon: /assets/icons/apprise.svg
+
+    - size: full
+      widgets:
+        - type: monitor
+          cache: 8m
+          title: Media backend
+          sites:
+            - title: Prowlarr
+              url: https://prowlarr.${GROUND_DOMAIN}
+              icon: /assets/icons/prowlarr.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+            - title: Radarr
+              url: https://radarr.${GROUND_DOMAIN}
+              icon: /assets/icons/radarr.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+            - title: Radarr anime
+              url: https://radarr-an.${GROUND_DOMAIN}
+              icon: /assets/icons/radarr.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+            - title: Bazarr
+              url: https://bazarr.${GROUND_DOMAIN}
+              icon: /assets/icons/bazarr.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+            - title: Sonarr
+              url: https://sonarr.${GROUND_DOMAIN}
+              icon: /assets/icons/sonarr.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+            - title: Sonarr anime
+              url: https://sonarr-an.${GROUND_DOMAIN}
+              icon: /assets/icons/sonarr.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+            - title: Tracearr
+              url: https://tracearr.${GROUND_DOMAIN}
+              icon: /assets/icons/tracearr.svg
+            - title: Fileflows
+              url: https://fileflows.${GROUND_DOMAIN}
+              icon: /assets/icons/fileflows.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+            - title: Profilarr
+              url: https://profilarr.${GROUND_DOMAIN}
+              icon: /assets/icons/profilarr.svg
+            - title: Qui
+              url: https://qui.${GROUND_DOMAIN}
+              icon: /assets/icons/qui.svg
+            - title: Qui sync
+              url: https://qui-sync.${GROUND_DOMAIN}
+              icon: /assets/icons/qui.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+            - title: Qbittorrent
+              url: https://qbittorrent.${GROUND_DOMAIN}
+              icon: /assets/icons/qbittorrent.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+            - title: Sabnzbd
+              url: https://sabnzbd.${GROUND_DOMAIN}
+              icon: /assets/icons/sabnzbd.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+
+        - type: docker-containers
+          title: Media backend services
+          running-only: false
+          hide-by-default: true
+          containers:
+            unpackerr:
+              format-container-names: true
+              description: Automated archive extractions.
+              icon: /assets/icons/unpackerr.png
+              hide: false
+            tracearr-db:
+              name: Timescaledb for Tracearr
+              description: Time-series database, used by Tracearr.
+              icon: /assets/icons/timescaledb.svg
+              hide: false
+            tracearr-redis:
+              name: Redis for Tracearr
+              description: In-memory data store for caching and queues, used by Tracearr.
+              icon: /assets/icons/redis.svg
+              hide: false
+
+        - type: monitor
+          cache: 8m
+          title: Administration
+          sites:
+            - title: Dockhand
+              url: https://dockhand.${GROUND_DOMAIN}
+              icon: /assets/icons/dockhand.png
+            - title: Cloudbeaver
+              url: https://cloudbeaver.${GROUND_DOMAIN}
+              icon: /assets/icons/cloudbeaver.svg
+            - title: Traefik
+              url: https://traefik.${GROUND_DOMAIN}
+              icon: /assets/icons/traefik.svg
+            - title: Vaultwarden admin
+              url: https://vaultwarden.${GROUND_DOMAIN}/admin
+              icon: /assets/icons/vaultwarden.svg
