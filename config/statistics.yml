@@ -3,7 +3,7 @@
     - size: small
       widgets:
         - type: custom-api
-          title: Jellyfin Stats
+          title: Jellyfin
           base-url: https://jellyfin.${GROUND_DOMAIN}
           options:
             url: https://jellyfin.${GROUND_DOMAIN}
@@ -45,7 +45,7 @@
             {{- end -}}
 
         - type: custom-api
-          title: SABnzbd Status
+          title: SABnzbd
           cache: 30s
           url: https://sabnzbd.${GROUND_DOMAIN}/api?output=json&apikey=${SABNZBD_API_KEY}&mode=queue
           headers:
@@ -261,7 +261,7 @@
         - type: split-column
           widgets:
             - type: custom-api
-              title: Prowlarr Indexers
+              title: Indexers
               cache: 1m
               options:
                 url: https://prowlarr.${GROUND_DOMAIN}
@@ -356,7 +356,7 @@
       widgets:
         - type: custom-api
           cache: 1h
-          title: Internet Speed
+          title: Internet Speed (Euclid)
           title-url: https://speedtest.${GROUND_DOMAIN}
           url: https://speedtest.${GROUND_DOMAIN}/api/v1/results/latest
           headers:

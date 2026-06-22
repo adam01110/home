@@ -27,6 +27,289 @@
   --access-tooltip: "Ask for account creation.";
 }
 
+.monitor-site {
+  --service-tooltip: "";
+  --tooltip-gap: 0.8rem;
+  --tooltip-arrow-size: 10px;
+  --tooltip-arrow-overlap: 5px;
+  --tooltip-row-offset: 0rem;
+  --tooltip-extra-lower-offset: 0rem;
+  --service-icon-visual-offset: -0.1rem;
+  --service-tooltip-left: 1.6rem;
+  --service-tooltip-translate-x: -50%;
+  --service-tooltip-arrow-translate-x: -50%;
+  --tooltip-arrow-left: var(--service-tooltip-left);
+  --tooltip-arrow-right: auto;
+  --tooltip-arrow-bottom: calc(
+    100% + var(--tooltip-gap) - var(--tooltip-arrow-overlap) - var(--service-icon-visual-offset) -
+      var(--tooltip-row-offset) - var(--tooltip-extra-lower-offset)
+  );
+  --tooltip-arrow-translate-x: -50%;
+  --access-tooltip-anchor-right: 3.8rem;
+  --access-tooltip-anchor-left: calc(100% - var(--access-tooltip-anchor-right));
+  --access-tooltip-translate-x: -50%;
+  --access-tooltip-arrow-translate-x: -50%;
+  position: relative;
+}
+
+.dynamic-columns > .monitor-site {
+  --service-tooltip-left: calc(var(--widget-content-horizontal-padding) + 1.6rem);
+}
+
+.dynamic-columns > .monitor-site:first-child {
+  --service-tooltip-left: 1.6rem;
+}
+
+@container widget (max-width: 599px) {
+  .dynamic-columns > .monitor-site {
+    --service-tooltip-left: 1.6rem;
+  }
+
+  .dynamic-columns.list-with-separator > .monitor-site:not(:first-child) {
+    --tooltip-row-offset: var(--list-half-gap);
+  }
+}
+
+@media (max-width: 599px) {
+  @container widget (max-width: 599px) {
+    .monitor-site {
+      --tooltip-widget-edge-offset: var(
+        --widget-content-horizontal-padding,
+        var(--content-bounds-padding, 0.8rem)
+      );
+      --service-tooltip-translate-x: max(
+        -50%,
+        calc(-1 * var(--service-tooltip-left) - var(--tooltip-widget-edge-offset))
+      );
+      --access-tooltip-translate-x: min(
+        -50%,
+        calc(-100% + var(--access-tooltip-anchor-right) + var(--tooltip-widget-edge-offset))
+      );
+    }
+  }
+}
+
+@container widget (min-width: 600px) and (max-width: 849px) {
+  .dynamic-columns > .monitor-site:nth-child(2n + 1) {
+    --service-tooltip-left: 1.6rem;
+  }
+}
+
+@container widget (min-width: 850px) and (max-width: 1249px) {
+  .dynamic-columns > .monitor-site:nth-child(3n + 1) {
+    --service-tooltip-left: 1.6rem;
+  }
+}
+
+@container widget (min-width: 1250px) and (max-width: 1499px) {
+  .dynamic-columns > .monitor-site:nth-child(4n + 1) {
+    --service-tooltip-left: 1.6rem;
+  }
+}
+
+@container widget (min-width: 1500px) {
+  .dynamic-columns > .monitor-site:nth-child(5n + 1) {
+    --service-tooltip-left: 1.6rem;
+  }
+}
+
+.monitor-site:has(a[href^="https://jellyfin."]) {
+  --service-tooltip: "Stream movies, shows, and other media from the server.";
+}
+
+.monitor-site:has(a[href^="https://seerr."]) {
+  --service-tooltip: "Request new movies and shows for the media library.";
+}
+
+.monitor-site:has(a[href^="https://anonymous-overflow."]) {
+  --service-tooltip: "Browse Stack Overflow through a privacy-friendly frontend.";
+}
+
+.monitor-site:has(a[href^="https://breezewiki."]) {
+  --service-tooltip: "Browse Fandom wikis through a cleaner, privacy-friendly frontend.";
+}
+
+.monitor-site:has(a[href^="https://atuin."]) {
+  --service-tooltip: "Sync shell history between your devices after account setup.";
+}
+
+.monitor-site:has(a[href^="https://firefox-sync."]) {
+  --service-tooltip: "Sync Firefox browser data using the self-hosted sync service.";
+}
+
+.monitor-site:has(a[href^="https://vaultwarden."]:not([href$="/admin"])) {
+  --service-tooltip: "Store and sync passwords using the Bitwarden-compatible vault.";
+}
+
+.monitor-site:has(a[href^="https://authentik."]) {
+  --service-tooltip: "Sign in and manage single sign-on for hosted services.";
+}
+
+.monitor-site:has(a[href^="https://speedtest."]) {
+  --service-tooltip: "Run a browser-based network speed test.";
+}
+
+.monitor-site:has(a[href^="https://gotify."]) {
+  --service-tooltip: "View push notifications sent by hosted services.";
+}
+
+.monitor-site:has(a[href^="https://apprise."]) {
+  --service-tooltip: "Manage notification routes for many supported services.";
+}
+
+.monitor-site:has(a[href^="https://prowlarr."]) {
+  --service-tooltip: "Manage indexers used by the media automation stack.";
+}
+
+.monitor-site:has(a[href^="https://radarr."]) {
+  --service-tooltip: "Manage movie collection automation.";
+}
+
+.monitor-site:has(a[href^="https://radarr-an."]) {
+  --service-tooltip: "Manage anime movie collection automation.";
+}
+
+.monitor-site:has(a[href^="https://bazarr."]) {
+  --service-tooltip: "Manage subtitle downloads for movies and shows.";
+}
+
+.monitor-site:has(a[href^="https://sonarr."]) {
+  --service-tooltip: "Manage TV show collection automation.";
+}
+
+.monitor-site:has(a[href^="https://sonarr-an."]) {
+  --service-tooltip: "Manage anime series collection automation.";
+}
+
+.monitor-site:has(a[href^="https://tracearr."]) {
+  --service-tooltip: "Track media activity and history.";
+}
+
+.monitor-site:has(a[href^="https://fileflows."]) {
+  --service-tooltip: "Process and convert media files with automated flows.";
+}
+
+.monitor-site:has(a[href^="https://profilarr."]) {
+  --service-tooltip: "Manage quality profiles for the media automation stack.";
+}
+
+.monitor-site:has(a[href^="https://qui."]:not([href^="https://qui-sync."])) {
+  --service-tooltip: "Manage qBittorrent from a web interface.";
+}
+
+.monitor-site:has(a[href^="https://qui-sync."]) {
+  --service-tooltip: "Synchronize qBittorrent interface data.";
+}
+
+.monitor-site:has(a[href^="https://qbittorrent."]) {
+  --service-tooltip: "Manage torrent downloads.";
+}
+
+.monitor-site:has(a[href^="https://sabnzbd."]) {
+  --service-tooltip: "Manage Usenet downloads.";
+}
+
+.monitor-site:has(a[href^="https://dockhand."]) {
+  --service-tooltip: "Manage Docker services from the browser.";
+}
+
+.monitor-site:has(a[href^="https://cloudbeaver."]) {
+  --service-tooltip: "Browse and administer databases from the browser.";
+}
+
+.monitor-site:has(a[href^="https://traefik."]) {
+  --service-tooltip: "View reverse proxy routing and service status.";
+}
+
+.monitor-site:has(a[href^="https://vaultwarden."][href$="/admin"]) {
+  --service-tooltip: "Administer the Vaultwarden server.";
+}
+
+.monitor-site .monitor-site-icon {
+  cursor: help;
+}
+
+@keyframes monitorTooltipArrowEntrance {
+  from {
+    opacity: 0;
+    transform: translate(var(--tooltip-arrow-translate-x), 0.8rem) rotate(-135deg);
+  }
+}
+
+@keyframes monitorTooltipServiceEntrance {
+  from {
+    opacity: 0;
+    transform: translate(var(--service-tooltip-translate-x), 0.8rem);
+  }
+}
+
+@keyframes monitorTooltipAccessEntrance {
+  from {
+    opacity: 0;
+    transform: translate(var(--access-tooltip-translate-x), 0.8rem);
+  }
+}
+
+.monitor-site::before {
+  content: "";
+  position: absolute;
+  left: var(--tooltip-arrow-left);
+  right: var(--tooltip-arrow-right);
+  bottom: var(--tooltip-arrow-bottom);
+  z-index: 21;
+  width: var(--tooltip-arrow-size);
+  height: var(--tooltip-arrow-size);
+  border-top: 1px solid var(--color-popover-border);
+  border-left: 1px solid var(--color-popover-border);
+  border-top-left-radius: 2px;
+  background: var(--color-popover-background);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(var(--tooltip-arrow-translate-x), 0.8rem) rotate(-135deg);
+}
+
+.monitor-site::after {
+  content: var(--service-tooltip);
+  position: absolute;
+  left: var(--service-tooltip-left);
+  right: auto;
+  bottom: calc(
+    100% + var(--tooltip-gap) - var(--tooltip-row-offset) - var(--tooltip-extra-lower-offset)
+  );
+  z-index: 20;
+  width: max-content;
+  max-width: min(
+    26rem,
+    calc(100vw - var(--content-bounds-padding, 0.8rem) - var(--content-bounds-padding, 0.8rem))
+  );
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--color-popover-border);
+  border-radius: var(--border-radius);
+  background: var(--color-popover-background);
+  color: var(--color-text-highlight);
+  font-size: 1.2rem;
+  line-height: 1.35;
+  box-shadow: 0 0.8rem 2rem hsl(0 0% 0% / 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(var(--service-tooltip-translate-x), 0.8rem);
+}
+
+.monitor-site:has(.monitor-site-icon:hover)::before {
+  --tooltip-arrow-left: var(--service-tooltip-left);
+  --tooltip-arrow-right: auto;
+  --tooltip-arrow-translate-x: var(--service-tooltip-arrow-translate-x);
+  opacity: 1;
+  transform: translate(var(--tooltip-arrow-translate-x), 0) rotate(-135deg);
+  animation: monitorTooltipArrowEntrance 0.3s backwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.monitor-site:has(.monitor-site-icon:hover)::after {
+  opacity: 1;
+  transform: translate(var(--service-tooltip-translate-x), 0);
+  animation: monitorTooltipServiceEntrance 0.3s backwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .monitor-site .monitor-site-status-icon {
   display: inline-flex;
   align-items: center;
@@ -55,31 +338,29 @@
   pointer-events: none;
 }
 
-.monitor-site .monitor-site-status-icon::after {
-  content: var(--access-tooltip);
-  position: absolute;
-  left: 1rem;
-  bottom: calc(100% + 0.8rem);
-  z-index: 20;
-  width: max-content;
-  max-width: 22rem;
-  padding: 0.6rem 0.8rem;
-  border: 1px solid var(--color-popover-border);
-  border-radius: var(--border-radius);
-  background: var(--color-popover-background);
-  color: var(--color-text-highlight);
-  font-size: 1.2rem;
-  line-height: 1.35;
-  box-shadow: 0 0.8rem 2rem hsl(0 0% 0% / 0.25);
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, 0.3rem);
-  transition:
-    opacity 0.15s,
-    transform 0.15s;
+.monitor-site:has(.monitor-site-status-icon:hover) {
+  --tooltip-extra-lower-offset: 1rem;
 }
 
-.monitor-site .monitor-site-status-icon:hover::after {
+.monitor-site:has(.monitor-site-status-icon:hover)::after {
+  content: var(--access-tooltip);
+  left: var(--access-tooltip-anchor-left);
+  right: auto;
+  max-width: min(
+    22rem,
+    calc(100vw - var(--content-bounds-padding, 0.8rem) - var(--content-bounds-padding, 0.8rem))
+  );
   opacity: 1;
-  transform: translate(-50%, 0);
+  transform: translate(var(--access-tooltip-translate-x), 0);
+  animation: monitorTooltipAccessEntrance 0.3s backwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.monitor-site:has(.monitor-site-status-icon:hover)::before {
+  --service-icon-visual-offset: 0rem;
+  --tooltip-arrow-left: var(--access-tooltip-anchor-left);
+  --tooltip-arrow-right: auto;
+  --tooltip-arrow-translate-x: var(--access-tooltip-arrow-translate-x);
+  opacity: 1;
+  transform: translate(var(--tooltip-arrow-translate-x), 0) rotate(-135deg);
+  animation: monitorTooltipArrowEntrance 0.3s backwards cubic-bezier(0.16, 1, 0.3, 1);
 }
