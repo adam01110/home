@@ -67,6 +67,9 @@
             - title: Copyparty
               url: https://copyparty.${GROUND_DOMAIN}
               icon: /assets/icons/copyparty.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
             - title: Authentik
               url: https://authentik.${GROUND_DOMAIN}
               icon: /assets/icons/authentik.svg
