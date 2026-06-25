@@ -64,6 +64,9 @@
             - title: Vaultwarden
               url: https://vaultwarden.${GROUND_DOMAIN}
               icon: /assets/icons/vaultwarden.svg
+            - title: Copyparty
+              url: https://copyparty.${GROUND_DOMAIN}
+              icon: /assets/icons/copyparty.svg
             - title: Authentik
               url: https://authentik.${GROUND_DOMAIN}
               icon: /assets/icons/authentik.svg

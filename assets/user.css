@@ -13,6 +13,7 @@
     [href^="https://vaultwarden."]:not([href$="/admin"]),
     [href^="https://gotify."],
     [href^="https://authentik."],
+    [href^="https://copyparty."],
     [href^="https://speedtest."],
     [href^="https://beszel."],
     [href^="https://libreseerr."]
@@ -149,6 +150,10 @@
 
 .monitor-site:has(a[href^="https://authentik."]) {
   --service-tooltip: "Sign in and manage single sign-on for hosted services.";
+}
+
+.monitor-site:has(a[href^="https://copyparty."]) {
+  --service-tooltip: "Browse, upload, and share files through the web file server.";
 }
 
 .monitor-site:has(a[href^="https://speedtest."]) {
