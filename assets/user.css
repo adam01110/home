@@ -13,7 +13,9 @@
     [href^="https://vaultwarden."]:not([href$="/admin"]),
     [href^="https://gotify."],
     [href^="https://authentik."],
-    [href^="https://speedtest."]
+    [href^="https://speedtest."],
+    [href^="https://beszel."],
+    [href^="https://libreseerr."]
   )
 ) {
   --access-icon: url("/assets/icons/check.svg");
@@ -121,6 +123,10 @@
   --service-tooltip: "Request new movies and shows for the media library.";
 }
 
+.monitor-site:has(a[href^="https://libreseerr."]) {
+  --service-tooltip: "Request books and other media for the library.";
+}
+
 .monitor-site:has(a[href^="https://anonymous-overflow."]) {
   --service-tooltip: "Browse Stack Overflow through a privacy-friendly frontend.";
 }
@@ -149,6 +155,10 @@
   --service-tooltip: "Run a browser-based network speed test.";
 }
 
+.monitor-site:has(a[href^="https://beszel."]) {
+  --service-tooltip: "Monitor server health, resource usage, and uptime.";
+}
+
 .monitor-site:has(a[href^="https://gotify."]) {
   --service-tooltip: "View push notifications sent by hosted services.";
 }
@@ -171,6 +181,10 @@
 
 .monitor-site:has(a[href^="https://bazarr."]) {
   --service-tooltip: "Manage subtitle downloads for movies and shows.";
+}
+
+.monitor-site:has(a[href^="https://lazylibrarian."]) {
+  --service-tooltip: "Manage book and magazine collection automation.";
 }
 
 .monitor-site:has(a[href^="https://sonarr."]) {

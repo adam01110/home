@@ -12,6 +12,9 @@
             - title: Seerr
               url: https://seerr.${GROUND_DOMAIN}
               icon: /assets/icons/seerr.svg
+            - title: Libreseerr
+              url: https://libreseerr.${GROUND_DOMAIN}
+              icon: /assets/icons/libreseerr.png
 
         - type: monitor
           cache: 8m
@@ -29,6 +32,17 @@
               basic-auth:
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
+
+        - type: monitor
+          cache: 8m
+          title: Monitoring
+          sites:
+            - title: Beszel
+              url: https://beszel.${GROUND_DOMAIN}
+              icon: /assets/icons/beszel.svg
+            - title: Speedtest
+              url: https://speedtest.${GROUND_DOMAIN}
+              icon: /assets/icons/speedtest.svg
 
     - size: small
       widgets:
@@ -53,9 +67,6 @@
             - title: Authentik
               url: https://authentik.${GROUND_DOMAIN}
               icon: /assets/icons/authentik.svg
-            - title: Speedtest
-              url: https://speedtest.${GROUND_DOMAIN}
-              icon: /assets/icons/speedtest.svg
 
         - type: monitor
           cache: 8m
@@ -140,6 +151,12 @@
             - title: Sabnzbd
               url: https://sabnzbd.${GROUND_DOMAIN}
               icon: /assets/icons/sabnzbd.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
+            - title: LazyLibrarian
+              url: https://lazylibrarian.${GROUND_DOMAIN}
+              icon: /assets/icons/lazylibrarian.png
               basic-auth:
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
