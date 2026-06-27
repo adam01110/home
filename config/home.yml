@@ -180,17 +180,17 @@
           running-only: false
           hide-by-default: true
           containers:
-            unpackerr:
+            media-unpackerr-1:
               format-container-names: true
               description: Automated archive extractions.
               icon: /assets/icons/unpackerr.png
               hide: false
-            tracearr-db:
+            media-tracearr-db-1:
               name: Timescaledb for Tracearr
               description: Time-series database, used by Tracearr.
               icon: /assets/icons/timescaledb.svg
               hide: false
-            tracearr-redis:
+            media-tracearr-redis-1:
               name: Redis for Tracearr
               description: In-memory data store for caching and queues, used by Tracearr.
               icon: /assets/icons/redis.svg
