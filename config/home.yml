@@ -175,6 +175,26 @@
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
 
+        - type: monitor
+          cache: 8m
+          title: Administration
+          sites:
+            - title: Dockhand
+              url: https://dockhand.${GROUND_DOMAIN}
+              icon: /assets/icons/dockhand.png
+            - title: Cloudbeaver
+              url: https://cloudbeaver.${GROUND_DOMAIN}
+              icon: /assets/icons/cloudbeaver.svg
+            - title: Traefik
+              url: https://traefik.${GROUND_DOMAIN}
+              icon: /assets/icons/traefik.svg
+            - title: CrowdSec
+              url: https://app.crowdsec.net/security-engines
+              icon: /assets/icons/crowdsec.svg
+            - title: Vaultwarden admin
+              url: https://vaultwarden.${GROUND_DOMAIN}/admin
+              icon: /assets/icons/vaultwarden.svg
+
         - type: docker-containers
           title: Media backend services
           running-only: false
@@ -196,22 +216,23 @@
               icon: /assets/icons/redis.svg
               hide: false
 
-        - type: monitor
-          cache: 8m
-          title: Administration
-          sites:
-            - title: Dockhand
-              url: https://dockhand.${GROUND_DOMAIN}
-              icon: /assets/icons/dockhand.png
-            - title: Cloudbeaver
-              url: https://cloudbeaver.${GROUND_DOMAIN}
-              icon: /assets/icons/cloudbeaver.svg
-            - title: Traefik
-              url: https://traefik.${GROUND_DOMAIN}
-              icon: /assets/icons/traefik.svg
-            - title: CrowdSec
-              url: https://app.crowdsec.net/security-engines
-              icon: /assets/icons/crowdsec.svg
-            - title: Vaultwarden admin
-              url: https://vaultwarden.${GROUND_DOMAIN}/admin
-              icon: /assets/icons/vaultwarden.svg
+        - type: docker-containers
+          title: Immich backend services
+          running-only: false
+          hide-by-default: true
+          containers:
+            immich-machine-learning-1:
+              name: Immich machine learning
+              description: Smart search, facial recognition, and metadata jobs.
+              icon: /assets/icons/immich.svg
+              hide: false
+            immich-postgres-1:
+              name: Postgres for Immich
+              description: Database used by Immich.
+              icon: /assets/icons/postgresql.svg
+              hide: false
+            immich-redis-1:
+              name: Redis for Immich
+              description: In-memory data store for caching and queues, used by Immich.
+              icon: /assets/icons/redis.svg
+              hide: false
