@@ -59,17 +59,25 @@
 
         - type: monitor
           cache: 8m
+          title: files
+          sites:
+            - title: copyparty
+              url: https://copyparty.${GROUND_DOMAIN}
+              icon: /assets/icons/copyparty.svg
+              basic-auth:
+                username: glance
+                password: ${authentik_password}
+            - title: immich
+              url: https://immich.${GROUND_DOMAIN}
+              icon: /assets/icons/immich.svg
+
+        - type: monitor
+          cache: 8m
           title: Other
           sites:
             - title: Vaultwarden
               url: https://vaultwarden.${GROUND_DOMAIN}
               icon: /assets/icons/vaultwarden.svg
-            - title: Copyparty
-              url: https://copyparty.${GROUND_DOMAIN}
-              icon: /assets/icons/copyparty.svg
-              basic-auth:
-                username: glance
-                password: ${AUTHENTIK_PASSWORD}
             - title: Authentik
               url: https://authentik.${GROUND_DOMAIN}
               icon: /assets/icons/authentik.svg
@@ -201,6 +209,9 @@
             - title: Traefik
               url: https://traefik.${GROUND_DOMAIN}
               icon: /assets/icons/traefik.svg
+            - title: CrowdSec
+              url: https://app.crowdsec.net/security-engines
+              icon: /assets/icons/crowdsec.svg
             - title: Vaultwarden admin
               url: https://vaultwarden.${GROUND_DOMAIN}/admin
               icon: /assets/icons/vaultwarden.svg

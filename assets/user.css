@@ -7,6 +7,7 @@
 .monitor-site:has(
   a:is(
     [href^="https://jellyfin."],
+    [href^="https://immich."],
     [href^="https://seerr."],
     [href^="https://anonymous-overflow."],
     [href^="https://breezewiki."],
@@ -117,131 +118,139 @@
 }
 
 .monitor-site:has(a[href^="https://jellyfin."]) {
-  --service-tooltip: "Stream movies, shows, and other media from the server.";
+  --service-tooltip: "Media library for movies, shows, music, and other collections.";
+}
+
+.monitor-site:has(a[href^="https://immich."]) {
+  --service-tooltip: "Photo and video library.";
 }
 
 .monitor-site:has(a[href^="https://seerr."]) {
-  --service-tooltip: "Request new movies and shows for the media library.";
+  --service-tooltip: "Media discovery and requests for movies and TV shows.";
 }
 
 .monitor-site:has(a[href^="https://libreseerr."]) {
-  --service-tooltip: "Request books and other media for the library.";
+  --service-tooltip: "Book requests for ebooks and audiobooks.";
 }
 
 .monitor-site:has(a[href^="https://anonymous-overflow."]) {
-  --service-tooltip: "Browse Stack Overflow through a privacy-friendly frontend.";
+  --service-tooltip: "Privacy-friendly Stack Overflow viewer.";
 }
 
 .monitor-site:has(a[href^="https://breezewiki."]) {
-  --service-tooltip: "Browse Fandom wikis through a cleaner, privacy-friendly frontend.";
+  --service-tooltip: "Cleaner Fandom wiki viewer with reduced tracking.";
 }
 
 .monitor-site:has(a[href^="https://atuin."]) {
-  --service-tooltip: "Sync shell history between your devices after account setup.";
+  --service-tooltip: "Encrypted shell history sync with searchable command history.";
 }
 
 .monitor-site:has(a[href^="https://firefox-sync."]) {
-  --service-tooltip: "Sync Firefox browser data using the self-hosted sync service.";
+  --service-tooltip: "Firefox browser sync for bookmarks, tabs, history, and profile data.";
 }
 
 .monitor-site:has(a[href^="https://vaultwarden."]:not([href$="/admin"])) {
-  --service-tooltip: "Store and sync passwords using the Bitwarden-compatible vault.";
+  --service-tooltip: "Bitwarden-compatible password vault.";
 }
 
 .monitor-site:has(a[href^="https://authentik."]) {
-  --service-tooltip: "Sign in and manage single sign-on for hosted services.";
+  --service-tooltip: "Single sign-on, authentication flows, and access control.";
 }
 
 .monitor-site:has(a[href^="https://copyparty."]) {
-  --service-tooltip: "Browse, upload, and share files through the web file server.";
+  --service-tooltip: "Web file browser for uploads, downloads, and sharing.";
 }
 
 .monitor-site:has(a[href^="https://speedtest."]) {
-  --service-tooltip: "Run a browser-based network speed test.";
+  --service-tooltip: "Browser-based network speed test.";
 }
 
 .monitor-site:has(a[href^="https://beszel."]) {
-  --service-tooltip: "Monitor server health, resource usage, and uptime.";
+  --service-tooltip: "Server metrics, uptime, and alerts.";
 }
 
 .monitor-site:has(a[href^="https://gotify."]) {
-  --service-tooltip: "View push notifications sent by hosted services.";
+  --service-tooltip: "Push notification inbox for alerts from connected apps.";
 }
 
 .monitor-site:has(a[href^="https://apprise."]) {
-  --service-tooltip: "Manage notification routes for many supported services.";
+  --service-tooltip: "Notifications routed through many supported apps.";
 }
 
 .monitor-site:has(a[href^="https://prowlarr."]) {
-  --service-tooltip: "Manage indexers used by the media automation stack.";
+  --service-tooltip: "Search indexers for the Servarr media automation stack.";
 }
 
 .monitor-site:has(a[href^="https://radarr."]) {
-  --service-tooltip: "Manage movie collection automation.";
+  --service-tooltip: "Movie collection automation.";
 }
 
 .monitor-site:has(a[href^="https://radarr-an."]) {
-  --service-tooltip: "Manage anime movie collection automation.";
+  --service-tooltip: "Anime movie collection automation.";
 }
 
 .monitor-site:has(a[href^="https://bazarr."]) {
-  --service-tooltip: "Manage subtitle downloads for movies and shows.";
+  --service-tooltip: "Subtitle downloads for Sonarr and Radarr libraries.";
 }
 
 .monitor-site:has(a[href^="https://lazylibrarian."]) {
-  --service-tooltip: "Manage book and magazine collection automation.";
+  --service-tooltip: "Book, magazine, and audiobook collection automation.";
 }
 
 .monitor-site:has(a[href^="https://sonarr."]) {
-  --service-tooltip: "Manage TV show collection automation.";
+  --service-tooltip: "TV series collection automation.";
 }
 
 .monitor-site:has(a[href^="https://sonarr-an."]) {
-  --service-tooltip: "Manage anime series collection automation.";
+  --service-tooltip: "Anime series collection.";
 }
 
 .monitor-site:has(a[href^="https://tracearr."]) {
-  --service-tooltip: "Track media activity and history.";
+  --service-tooltip: "Playback analytics for Jellyfin.";
 }
 
 .monitor-site:has(a[href^="https://fileflows."]) {
-  --service-tooltip: "Process and convert media files with automated flows.";
+  --service-tooltip: "Automated media file conversion, remuxing, and cleanup.";
 }
 
 .monitor-site:has(a[href^="https://profilarr."]) {
-  --service-tooltip: "Manage quality profiles for the media automation stack.";
+  --service-tooltip: "Radarr and Sonarr profiles, custom formats, and quality rules.";
 }
 
 .monitor-site:has(a[href^="https://qui."]:not([href^="https://qui-sync."])) {
-  --service-tooltip: "Manage qBittorrent from a web interface.";
+  --service-tooltip: "Qbittorrent web ui for multiple instances, workflows, and cross-seeding.";
 }
 
 .monitor-site:has(a[href^="https://qui-sync."]) {
-  --service-tooltip: "Synchronize qBittorrent interface data.";
+  --service-tooltip: "TRaSH Guides automation sync for Qui.";
 }
 
 .monitor-site:has(a[href^="https://qbittorrent."]) {
-  --service-tooltip: "Manage torrent downloads.";
+  --service-tooltip: "Torrent downloads.";
 }
 
 .monitor-site:has(a[href^="https://sabnzbd."]) {
-  --service-tooltip: "Manage Usenet downloads.";
+  --service-tooltip: "Usenet downloads for media files.";
 }
 
 .monitor-site:has(a[href^="https://dockhand."]) {
-  --service-tooltip: "Manage Docker services from the browser.";
+  --service-tooltip: "Docker containers, Compose stacks, and environments.";
 }
 
 .monitor-site:has(a[href^="https://cloudbeaver."]) {
-  --service-tooltip: "Browse and administer databases from the browser.";
+  --service-tooltip: "Database browsing and administration.";
 }
 
 .monitor-site:has(a[href^="https://traefik."]) {
-  --service-tooltip: "View reverse proxy routing and service status.";
+  --service-tooltip: "Web traffic routing and load balancing.";
+}
+
+.monitor-site:has(a[href^="https://app.crowdsec.net/security-engines"]) {
+  --service-tooltip: "CrowdSec security engine activity and enrolled machines.";
 }
 
 .monitor-site:has(a[href^="https://vaultwarden."][href$="/admin"]) {
-  --service-tooltip: "Administer the Vaultwarden server.";
+  --service-tooltip: "Vaultwarden password vault administration.";
 }
 
 .monitor-site .monitor-site-icon {
