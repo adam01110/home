@@ -168,9 +168,9 @@
               basic-auth:
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
-            - title: LazyLibrarian
-              url: https://lazylibrarian.${GROUND_DOMAIN}
-              icon: /assets/icons/lazylibrarian.png
+            - title: Chaptarr
+              url: https://chaptarr.${GROUND_DOMAIN}
+              icon: /assets/icons/chaptarr.svg
               basic-auth:
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
