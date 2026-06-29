@@ -12,9 +12,9 @@
             - title: Seerr
               url: https://seerr.${GROUND_DOMAIN}
               icon: /assets/icons/seerr.svg
-            - title: Libreseerr
-              url: https://libreseerr.${GROUND_DOMAIN}
-              icon: /assets/icons/libreseerr.png
+            - title: Shelfmark
+              url: https://shelfmark.${GROUND_DOMAIN}
+              icon: /assets/icons/shelfmark.svg
 
         - type: monitor
           cache: 8m

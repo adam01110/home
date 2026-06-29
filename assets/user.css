@@ -17,7 +17,7 @@
     [href^="https://copyparty."],
     [href^="https://speedtest."],
     [href^="https://beszel."],
-    [href^="https://libreseerr."]
+    [href^="https://shelfmark."]
   )
 ) {
   --access-icon: url("/assets/icons/check.svg");
@@ -129,7 +129,7 @@
   --service-tooltip: "Media discovery and requests for movies and TV shows.";
 }
 
-.monitor-site:has(a[href^="https://libreseerr."]) {
+.monitor-site:has(a[href^="https://shelfmark."]) {
   --service-tooltip: "Book requests for ebooks and audiobooks.";
 }
 
