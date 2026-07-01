@@ -26,15 +26,23 @@
 }
 
 .monitor-site:has(
-  a:is([href^="https://atuin."], [href^="https://firefox-sync."], [href^="https://pds."])
+  a:is(
+    [href^="https://atuin."],
+    [href^="https://firefox-sync."],
+    [href^="https://pds."],
+    [href^="https://knot."],
+    [href^="https://spindle."]
+  )
 ) {
   --access-icon: url("/assets/icons/warning.svg");
   --access-color: hsl(34, 95%, 55%);
   --access-tooltip: "Ask for account creation.";
 }
 
-.monitor-site:has(a[href^="https://pds."]) {
-  --access-tooltip: "Invite-only registration.";
+.monitor-site:has(
+  a:is([href^="https://pds."], [href^="https://knot."], [href^="https://spindle."])
+) {
+  --access-tooltip: "Ask for invite.";
 }
 
 .monitor-site {
@@ -165,6 +173,14 @@
 
 .monitor-site:has(a[href^="https://pds."]) {
   --service-tooltip: "AT Protocol personal data server.";
+}
+
+.monitor-site:has(a[href^="https://knot."]) {
+  --service-tooltip: "Tangled Git repository hosting server.";
+}
+
+.monitor-site:has(a[href^="https://spindle."]) {
+  --service-tooltip: "Tangled CI runner for repository pipelines.";
 }
 
 .monitor-site:has(a[href^="https://copyparty."]) {
