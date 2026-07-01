@@ -81,6 +81,9 @@
             - title: Authentik
               url: https://authentik.${GROUND_DOMAIN}
               icon: /assets/icons/authentik.svg
+            - title: PDS
+              url: https://pds.${GROUND_DOMAIN}
+              icon: /assets/icons/atproto.svg
 
         - type: monitor
           cache: 8m

@@ -25,10 +25,16 @@
   --access-tooltip: "User access allowed.";
 }
 
-.monitor-site:has(a:is([href^="https://atuin."], [href^="https://firefox-sync."])) {
+.monitor-site:has(
+  a:is([href^="https://atuin."], [href^="https://firefox-sync."], [href^="https://pds."])
+) {
   --access-icon: url("/assets/icons/warning.svg");
   --access-color: hsl(34, 95%, 55%);
   --access-tooltip: "Ask for account creation.";
+}
+
+.monitor-site:has(a[href^="https://pds."]) {
+  --access-tooltip: "Invite-only registration.";
 }
 
 .monitor-site {
@@ -155,6 +161,10 @@
 
 .monitor-site:has(a[href^="https://authentik."]) {
   --service-tooltip: "Single sign-on, authentication flows, and access control.";
+}
+
+.monitor-site:has(a[href^="https://pds."]) {
+  --service-tooltip: "AT Protocol personal data server.";
 }
 
 .monitor-site:has(a[href^="https://copyparty."]) {
