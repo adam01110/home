@@ -104,6 +104,9 @@
             - title: Authentik
               url: https://authentik.${GROUND_DOMAIN}
               icon: /assets/icons/authentik.svg
+            - title: Tiny Tiny RSS
+              url: https://ttrss.${GROUND_DOMAIN}
+              icon: /assets/icons/tiny-tiny-rss.svg
 
         - type: monitor
           cache: 8m

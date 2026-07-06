@@ -17,7 +17,8 @@
     [href^="https://copyparty."],
     [href^="https://speedtest."],
     [href^="https://beszel."],
-    [href^="https://shelfmark."]
+    [href^="https://shelfmark."],
+    [href^="https://ttrss."]
   )
 ) {
   --access-icon: url("/assets/icons/check.svg");
@@ -169,6 +170,10 @@
 
 .monitor-site:has(a[href^="https://authentik."]) {
   --service-tooltip: "Single sign-on, authentication flows, and access control.";
+}
+
+.monitor-site:has(a[href^="https://ttrss."]) {
+  --service-tooltip: "RSS feed reader.";
 }
 
 .monitor-site:has(a[href^="https://pds."]) {
