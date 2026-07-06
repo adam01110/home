@@ -182,13 +182,12 @@
               basic-auth:
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
-            - title: Chaptarr
-              url: https://chaptarr.${GROUND_DOMAIN}
-              icon: /assets/icons/chaptarr.svg
+            - title: MediaLyze
+              url: https://medialyze.${GROUND_DOMAIN}
+              icon: /assets/icons/medialyze.svg
               basic-auth:
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
-
         - type: monitor
           cache: 8m
           title: Administration

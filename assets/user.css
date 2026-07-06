@@ -219,8 +219,8 @@
   --service-tooltip: "Subtitle downloads for Sonarr and Radarr libraries.";
 }
 
-.monitor-site:has(a[href^="https://chaptarr."]) {
-  --service-tooltip: "Book, magazine, and audiobook collection automation.";
+.monitor-site:has(a[href^="https://medialyze."]) {
+  --service-tooltip: "Media library analytics.";
 }
 
 .monitor-site:has(a[href^="https://sonarr."]) {
