@@ -43,6 +43,15 @@
             - title: Speedtest
               url: https://speedtest.${GROUND_DOMAIN}
               icon: /assets/icons/speedtest.svg
+            - title: Tracearr
+              url: https://tracearr.${GROUND_DOMAIN}
+              icon: /assets/icons/tracearr.svg
+            - title: MediaLyze
+              url: https://medialyze.${GROUND_DOMAIN}
+              icon: /assets/icons/medialyze.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
 
         - type: monitor
           cache: 8m
@@ -149,9 +158,6 @@
               basic-auth:
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
-            - title: Tracearr
-              url: https://tracearr.${GROUND_DOMAIN}
-              icon: /assets/icons/tracearr.svg
             - title: Fileflows
               url: https://fileflows.${GROUND_DOMAIN}
               icon: /assets/icons/fileflows.svg
@@ -179,12 +185,6 @@
             - title: Sabnzbd
               url: https://sabnzbd.${GROUND_DOMAIN}
               icon: /assets/icons/sabnzbd.svg
-              basic-auth:
-                username: glance
-                password: ${AUTHENTIK_PASSWORD}
-            - title: MediaLyze
-              url: https://medialyze.${GROUND_DOMAIN}
-              icon: /assets/icons/medialyze.svg
               basic-auth:
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
