@@ -82,6 +82,14 @@
 
         - type: monitor
           cache: 8m
+          title: Nix
+          sites:
+            - title: Nix cache proxy
+              url: https://ncps.${GROUND_DOMAIN}
+              icon: /assets/icons/ncps.svg
+
+        - type: monitor
+          cache: 8m
           title: files
           sites:
             - title: copyparty

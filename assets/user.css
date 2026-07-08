@@ -32,7 +32,8 @@
     [href^="https://firefox-sync."],
     [href^="https://pds."],
     [href^="https://knot."],
-    [href^="https://spindle."]
+    [href^="https://spindle."],
+    [href^="https://ncps."]
   )
 ) {
   --access-icon: url("/assets/icons/warning.svg");
@@ -282,6 +283,10 @@
 
 .monitor-site:has(a[href^="https://vaultwarden."][href$="/admin"]) {
   --service-tooltip: "Vaultwarden password vault administration.";
+}
+
+.monitor-site:has(a[href^="https://ncps."]) {
+  --service-tooltip: "Nix binary cache proxy.";
 }
 
 .monitor-site .monitor-site-icon {
