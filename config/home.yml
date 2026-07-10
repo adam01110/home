@@ -87,6 +87,9 @@
             - title: Nix cache proxy
               url: https://ncps.${GROUND_DOMAIN}
               icon: /assets/icons/ncps.svg
+              basic-auth:
+                username: nix
+                password: ${NCPS_TOKEN}
 
         - type: monitor
           cache: 8m
