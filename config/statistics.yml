@@ -398,8 +398,8 @@
                     {{ $systemTemp := $system.Float "info.dt" }}
 
                     {{ $cpuLoad := $system.Float "info.cpu" }}
-                    {{ $cpuLoad1m := $system.Float "info.l1" }}
-                    {{ $cpuLoad15m := $system.Float "info.l15" }}
+                    {{ $cpuLoad1m := $system.Float "info.la.0" }}
+                    {{ $cpuLoad15m := $system.Float "info.la.2" }}
 
                     {{ $memoryUsedPercent := $system.Float "info.mp" }}
                     {{ $rootUsedPercent := $system.Float "info.dp" }}
