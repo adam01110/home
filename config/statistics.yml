@@ -340,10 +340,12 @@
               cache: 5m
               options:
                 base-url: https://beszel.${GROUND_DOMAIN}
-                api-key: ${BESZEL_TOKEN}
+                email: ${BESZEL_EMAIL}
+                password: ${BESZEL_PASSWORD}
               template: |
                 {{ $baseURL := .Options.StringOr "base-url" "" }}
-                {{ $apiKey := .Options.StringOr "api-key" "" }}
+                {{ $email := .Options.StringOr "email" "" }}
+                {{ $password := .Options.StringOr "password" "" }}
 
                 {{ define "errorMsg" }}
                   <div class="widget-error-header">
@@ -369,17 +371,29 @@
                   {{ printf "%.1f" $value }} <span class="color-base size-h5">{{ $label }}</span>
                 {{ end }}
 
-                {{ if or (eq $baseURL "") (eq $apiKey "") }}
+                {{ if or (eq $baseURL "") (eq $email "") (eq $password "") }}
                   {{ template "errorMsg" "Some required options are not set." }}
                 {{ else }}
-                  {{ $token := concat "Bearer " $apiKey }}
-
-                  {{ $systemsResponse := newRequest (print $baseURL "/api/collections/systems/records")
-                    | withHeader "Authorization" $token
+                  {{ $authBody := printf "{\"identity\":%s,\"password\":%s}" (.Options.JSON "email") (.Options.JSON "password") }}
+                  {{ $authResponse := newRequest (print $baseURL "/api/collections/users/auth-with-password")
+                    | withParameter "fields" "token"
+                    | withHeader "Content-Type" "application/json"
+                    | withStringBody $authBody
                     | getResponse }}
-                  {{ $systems := $systemsResponse.JSON.Array "items" }}
 
-                  {{ range $n, $system := $systems }}
+                  {{ if ne $authResponse.Response.StatusCode 200 }}
+                    {{ template "errorMsg" (printf "Beszel authentication failed: %s" $authResponse.Response.Status) }}
+                  {{ else }}
+                    {{ $token := concat "Bearer " ($authResponse.JSON.String "token") }}
+
+                    {{ $systemsResponse := newRequest (print $baseURL "/api/collections/systems/records")
+                      | withHeader "Authorization" $token
+                      | getResponse }}
+
+                    {{ if ne $systemsResponse.Response.StatusCode 200 }}
+                      {{ template "errorMsg" (printf "Failed to fetch Beszel systems: %s" $systemsResponse.Response.Status) }}
+                    {{ else }}
+                    {{ range $n, $system := $systemsResponse.JSON.Array "items" }}
                     {{ $status := $system.String "status" }}
 
                     {{ $systemStatsRequest := newRequest (print $baseURL "/api/collections/system_stats/records")
@@ -576,6 +590,8 @@
                         </div>
                       </div>
                     </div>
+                  {{ end }}
+                  {{ end }}
                   {{ end }}
                 {{ end }}
 
