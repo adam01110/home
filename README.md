@@ -25,7 +25,7 @@ included files, so it reloads them without a container restart.
 
    ```sh
    podman build -t localhost/glance-updater:latest /var/lib/glance/webhook
-   podman compose up -d glance-updater
+   podman compose up -d updater
    ```
 
 5. In Tangled, open **Settings > Hooks** and create an active push webhook:
@@ -36,7 +36,7 @@ The Glance route can keep its Authentik middleware. The more-specific webhook
 route intentionally has no Authentik middleware because Tangled authenticates
 with its HMAC signature instead.
 
-The updater uses `git pull --ff-only`. If the server checkout has local changes
-or has diverged, the update fails rather than discarding anything. For a private
-repository, also mount read-only Git credentials into `glance-updater`; a public
-HTTPS remote needs no credentials.
+The updater fetches `origin/main` and resets the checkout to that commit. This
+overwrites tracked local changes and divergent local commits, but preserves
+untracked files. For a private repository, also mount read-only Git credentials
+into `updater`; a public HTTPS remote needs no credentials.

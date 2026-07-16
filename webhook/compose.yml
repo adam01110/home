@@ -1,20 +1,25 @@
 services:
-  glance-updater:
-    image: localhost/glance-updater:latest
-    pull_policy: never
-    hostname: glance-updater
-    restart: unless-stopped
+  updater:
+    image: "localhost/glance-updater:latest"
+    pull_policy: "never"
+    hostname: "updater"
+    restart: "unless-stopped"
     user: "1000:1000"
-    read_only: true
-    tmpfs:
-      - /tmp:size=1m,mode=1777
-    environment:
-      WEBHOOK_SECRET: "${GLANCE_WEBHOOK_SECRET:?GLANCE_WEBHOOK_SECRET must be set}"
-    volumes:
-      - /var/lib/glance:/repo
+    read_only: "true"
     labels:
       traefik.enable: "true"
       traefik.http.routers.glance-updater.rule: "Host(`${GROUND_DOMAIN}`) && Path(`/hooks/glance`)"
       traefik.http.routers.glance-updater.entrypoints: "websecure"
       traefik.http.routers.glance-updater.tls.certresolver: "myresolver"
       traefik.http.services.glance-updater.loadbalancer.server.port: "9000"
+    environment:
+      WEBHOOK_SECRET: "${GLANCE_WEBHOOK_SECRET}"
+    volumes:
+      - "/var/lib/glance:/repo"
+      - "updater-cache:/etc/webhook"
+
+volumes:
+  updater-cache:
+    driver_opts:
+      type: "tmpfs"
+      device: "tmpfs"
