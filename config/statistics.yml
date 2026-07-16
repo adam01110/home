@@ -742,15 +742,18 @@
                   {{ $percentage = $storage.JSON.Float "diskUsagePercentage" }}
                 {{ end }}
 
-                <div class="immich-stats">
-                  <div class="immich-stat">
-                    <div><div class="color-highlight size-h3">{{ $photos | formatNumber }}</div><div class="size-h6">PHOTOS</div></div>
+                <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; text-align: center;">
+                  <div>
+                    <div class="color-highlight size-h3">{{ $photos | formatNumber }}</div>
+                    <div class="size-h6">PHOTOS</div>
                   </div>
-                  <div class="immich-stat">
-                    <div><div class="color-highlight size-h3">{{ $videos | formatNumber }}</div><div class="size-h6">VIDEOS</div></div>
+                  <div>
+                    <div class="color-highlight size-h3">{{ $videos | formatNumber }}</div>
+                    <div class="size-h6">VIDEOS</div>
                   </div>
-                  <div class="immich-stat">
-                    <div><div class="color-highlight size-h3">{{ printf "%.1f" $usageGiB }} <span class="color-base size-h5">GiB</span></div><div class="size-h6">STORAGE</div></div>
+                  <div>
+                    <div class="color-highlight size-h3">{{ printf "%.1f" $usageGiB }} <span class="color-base size-h5">GiB</span></div>
+                    <div class="size-h6">STORAGE</div>
                   </div>
                 </div>
                 {{ if $storageOK }}

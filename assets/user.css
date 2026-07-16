@@ -24,26 +24,6 @@
   margin-left: 0.3rem;
 }
 
-.immich-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  text-align: center;
-}
-
-.immich-stat {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
-  min-width: 0;
-}
-
-.immich-stat > div {
-  width: 100%;
-  text-align: center;
-}
-
 .immich-storage-label {
   display: flex;
   justify-content: space-between;
