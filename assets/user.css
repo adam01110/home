@@ -37,28 +37,12 @@
   min-width: 0;
 }
 
-.immich-stat-icon {
-  width: 2.8rem;
-  height: 2.8rem;
-}
-
 .immich-storage-label {
   display: flex;
   justify-content: space-between;
   margin: 1rem 0 0.4rem;
   color: var(--color-text-subdue);
   font-size: var(--font-size-tiny);
-}
-
-@container widget (max-width: 420px) {
-  .immich-stat {
-    gap: 0.4rem;
-  }
-
-  .immich-stat-icon {
-    width: 2.2rem;
-    height: 2.2rem;
-  }
 }
 
 .monitor-site {

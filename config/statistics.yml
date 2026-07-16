@@ -744,15 +744,12 @@
 
                 <div class="immich-stats">
                   <div class="immich-stat">
-                    <span class="asset-icon immich-stat-icon" style="--asset-icon: url('/assets/icons/immich/photos.svg')"></span>
                     <div><div class="color-highlight size-h3">{{ $photos | formatNumber }}</div><div class="size-h6">PHOTOS</div></div>
                   </div>
                   <div class="immich-stat">
-                    <span class="asset-icon immich-stat-icon" style="--asset-icon: url('/assets/icons/immich/videos.svg')"></span>
                     <div><div class="color-highlight size-h3">{{ $videos | formatNumber }}</div><div class="size-h6">VIDEOS</div></div>
                   </div>
                   <div class="immich-stat">
-                    <span class="asset-icon immich-stat-icon" style="--asset-icon: url('/assets/icons/immich/storage.svg')"></span>
                     <div><div class="color-highlight size-h3">{{ printf "%.1f" $usageGiB }} <span class="color-base size-h5">GiB</span></div><div class="size-h6">STORAGE</div></div>
                   </div>
                 </div>

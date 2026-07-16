@@ -103,7 +103,7 @@
                 password: ${authentik_password}
             - title: immich
               url: https://immich.${GROUND_DOMAIN}
-              icon: /assets/icons/immich/icon.svg
+              icon: /assets/icons/immich.svg
 
         - type: monitor
           cache: 8m
