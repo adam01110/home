@@ -39,6 +39,11 @@
   min-width: 0;
 }
 
+.immich-stat > div {
+  width: 100%;
+  text-align: center;
+}
+
 .immich-storage-label {
   display: flex;
   justify-content: space-between;
