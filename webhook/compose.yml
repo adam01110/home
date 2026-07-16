@@ -1,7 +1,7 @@
 services:
   glance-updater:
-    build:
-      context: /var/lib/glance/deploy/webhook
+    image: localhost/glance-updater:latest
+    pull_policy: never
     hostname: glance-updater
     restart: unless-stopped
     user: "1000:1000"
