@@ -359,14 +359,14 @@
 
                 {{ define "formatGigabytes" }}
                   {{ $value := . }}
-                  {{ $label := "GB" }}
+                  {{ $label := "GiB" }}
                   {{- if lt $value 1.0 }}
-                    {{ $value = mul $value 1000.0 }}
-                    {{ $label = "MB" }}
-                  {{- else if lt $value 1000.0 }}
+                    {{ $value = mul $value 1024.0 }}
+                    {{ $label = "MiB" }}
+                  {{- else if lt $value 1024.0 }}
                   {{ else }}
-                    {{ $value = div $value 1000.0 }}
-                    {{ $label = "TB" }}
+                    {{ $value = div $value 1024.0 }}
+                    {{ $label = "TiB" }}
                   {{ end }}
                   {{ printf "%.1f" $value }} <span class="color-base size-h5">{{ $label }}</span>
                 {{ end }}
