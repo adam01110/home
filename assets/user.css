@@ -34,6 +34,7 @@
 .immich-stat {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.7rem;
   min-width: 0;
 }
