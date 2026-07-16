@@ -39,7 +39,7 @@
           sites:
             - title: Beszel
               url: https://beszel.${GROUND_DOMAIN}
-              icon: /assets/icons/beszel.svg
+              icon: /assets/icons/beszel/icon.svg
             - title: Speedtest
               url: https://speedtest.${GROUND_DOMAIN}
               icon: /assets/icons/speedtest.svg
@@ -103,7 +103,7 @@
                 password: ${authentik_password}
             - title: immich
               url: https://immich.${GROUND_DOMAIN}
-              icon: /assets/icons/immich.svg
+              icon: /assets/icons/immich/icon.svg
 
         - type: monitor
           cache: 8m
@@ -208,7 +208,7 @@
           sites:
             - title: Dockhand
               url: https://dockhand.${GROUND_DOMAIN}
-              icon: /assets/icons/dockhand.png
+              icon: /assets/icons/dockhand/icon.png
             - title: Cloudbeaver
               url: https://cloudbeaver.${GROUND_DOMAIN}
               icon: /assets/icons/cloudbeaver.svg
@@ -251,7 +251,7 @@
             immich-machine-learning-1:
               name: Immich machine learning
               description: Smart search, facial recognition, and metadata jobs.
-              icon: /assets/icons/immich.svg
+              icon: /assets/icons/immich/icon.svg
               hide: false
             immich-postgres-1:
               name: Postgres for Immich

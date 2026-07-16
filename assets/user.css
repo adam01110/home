@@ -1,5 +1,68 @@
+.asset-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: var(--asset-color, var(--color-primary));
+  -webkit-mask: var(--asset-icon) center / contain no-repeat;
+  mask: var(--asset-icon) center / contain no-repeat;
+}
+
+.widget-error-icon,
+.server-icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.indexer-status-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.server-spicy-cpu-icon {
+  width: 1.2em;
+  height: 1.2em;
+  margin-left: 0.3rem;
+}
+
+.immich-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.immich-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.immich-stat-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.immich-storage-label {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0 0.4rem;
+  color: var(--color-text-subdue);
+  font-size: var(--font-size-tiny);
+}
+
+@container widget (max-width: 420px) {
+  .immich-stat {
+    gap: 0.4rem;
+  }
+
+  .immich-stat-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}
+
 .monitor-site {
-  --access-icon: url("/assets/icons/x.svg");
+  --access-icon: url("/assets/icons/status/x.svg");
   --access-color: var(--color-negative);
   --access-tooltip: "Admin-only page.";
 }
@@ -21,7 +84,7 @@
     [href^="https://ttrss."]
   )
 ) {
-  --access-icon: url("/assets/icons/check.svg");
+  --access-icon: url("/assets/icons/status/check.svg");
   --access-color: var(--color-positive);
   --access-tooltip: "User access allowed.";
 }
@@ -36,7 +99,7 @@
     [href^="https://ncps."]
   )
 ) {
-  --access-icon: url("/assets/icons/warning.svg");
+  --access-icon: url("/assets/icons/status/warning.svg");
   --access-color: hsl(34, 95%, 55%);
   --access-tooltip: "Ask for account creation.";
 }
