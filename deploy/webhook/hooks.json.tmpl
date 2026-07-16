@@ -1,0 +1,43 @@
+[
+  {
+    "id": "glance",
+    "execute-command": "/usr/local/bin/update-glance",
+    "response-message": "Glance update completed",
+    "include-command-output-in-response": false,
+    "trigger-rule-mismatch-http-response-code": 401,
+    "trigger-rule": {
+      "and": [
+        {
+          "match": {
+            "type": "payload-hmac-sha256",
+            "secret": "{{ getenv "WEBHOOK_SECRET" | js }}",
+            "parameter": {
+              "source": "header",
+              "name": "X-Tangled-Signature-256"
+            }
+          }
+        },
+        {
+          "match": {
+            "type": "value",
+            "value": "push",
+            "parameter": {
+              "source": "header",
+              "name": "X-Tangled-Event"
+            }
+          }
+        },
+        {
+          "match": {
+            "type": "value",
+            "value": "refs/heads/main",
+            "parameter": {
+              "source": "payload",
+              "name": "ref"
+            }
+          }
+        }
+      ]
+    }
+  }
+]
