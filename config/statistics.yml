@@ -17,8 +17,10 @@
             {{- else -}}
               {{- $requestUrl := printf "%s/emby/Items/Counts?api_key=%s" $url $key -}}
               {{- $jellyfinData := newRequest $requestUrl | getResponse -}}
+              {{- $audiobooksUrl := printf "%s/emby/Items?IncludeItemTypes=AudioBook&Recursive=true&Limit=0&EnableTotalRecordCount=true&api_key=%s" $url $key -}}
+              {{- $audiobooksData := newRequest $audiobooksUrl | getResponse -}}
 
-              {{- if eq $jellyfinData.Response.StatusCode 200 -}}
+              {{- if and (eq $jellyfinData.Response.StatusCode 200) (eq $audiobooksData.Response.StatusCode 200) -}}
                 <div class="flex flex-column gap-5">
                   <div class="flex justify-between text-center">
                     <div>
@@ -33,14 +35,24 @@
                       <div class="color-highlight size-h3">{{ $jellyfinData.JSON.Int "EpisodeCount" | formatNumber }}</div>
                       <div class="size-h5 uppercase">Episodes</div>
                     </div>
+                  </div>
+                  <div class="flex justify-between text-center">
                     <div>
                       <div class="color-highlight size-h3">{{ $jellyfinData.JSON.Int "SongCount" | formatNumber }}</div>
                       <div class="size-h5 uppercase">Songs</div>
                     </div>
+                    <div>
+                      <div class="color-highlight size-h3">{{ $jellyfinData.JSON.Int "BookCount" | formatNumber }}</div>
+                      <div class="size-h5 uppercase">Books</div>
+                    </div>
+                    <div>
+                      <div class="color-highlight size-h3">{{ $audiobooksData.JSON.Int "TotalRecordCount" | formatNumber }}</div>
+                      <div class="size-h5 uppercase">Audiobooks</div>
+                    </div>
                   </div>
                 </div>
               {{- else -}}
-                <p>Failed: {{ $jellyfinData.Response.Status }}</p>
+                <p>Failed to fetch Jellyfin library counts.</p>
               {{- end -}}
             {{- end -}}
 
