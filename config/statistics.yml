@@ -264,6 +264,163 @@
               </div>
             {{ end }}
 
+        - type: custom-api
+          title: Dockhand
+          title-url: https://dockhand.${GROUND_DOMAIN}
+          cache: 1h
+          url: https://dockhand.${GROUND_DOMAIN}/api/environments?env=1
+          headers:
+            Authorization: Bearer ${DOCKHAND_API_TOKEN}
+          subrequests:
+            containers:
+              url: https://dockhand.${GROUND_DOMAIN}/api/containers?env=1
+              headers:
+                Authorization: Bearer ${DOCKHAND_API_TOKEN}
+            images:
+              url: https://dockhand.${GROUND_DOMAIN}/api/images?env=1
+              headers:
+                Authorization: Bearer ${DOCKHAND_API_TOKEN}
+            networks:
+              url: https://dockhand.${GROUND_DOMAIN}/api/networks?env=1
+              headers:
+                Authorization: Bearer ${DOCKHAND_API_TOKEN}
+            volumes:
+              url: https://dockhand.${GROUND_DOMAIN}/api/volumes?env=1
+              headers:
+                Authorization: Bearer ${DOCKHAND_API_TOKEN}
+            stacks:
+              url: https://dockhand.${GROUND_DOMAIN}/api/stacks?env=1
+              headers:
+                Authorization: Bearer ${DOCKHAND_API_TOKEN}
+          template: |
+            <style>
+              svg.icon {
+                height: 1.5em;
+                stroke: gray;
+                fill: none;
+                margin-bottom: 0.25em;
+              }
+            </style>
+
+            {{ $containers := (.Subrequest "containers").JSON.Array "" }}
+            {{ $images := (.Subrequest "images").JSON.Array "" }}
+            {{ $networks := (.Subrequest "networks").JSON.Array "" }}
+            {{ $volumes := (.Subrequest "volumes").JSON.Array "" }}
+            {{ $stacks := (.Subrequest "stacks").JSON.Array "" }}
+
+            {{ $running := 0 }}
+            {{ $stopped := 0 }}
+            {{ range $containers }}
+              {{ if eq (.String "state") "running" }}
+                {{ $running = add $running 1 }}
+              {{ else }}
+                {{ $stopped = add $stopped 1 }}
+              {{ end }}
+            {{ end }}
+
+            <div style="display:flex; justify-content:space-between; gap:12px; margin-top:0.5em;">
+              <div data-popover-type="text" data-popover-text="Running containers"
+                   style="flex:1; display:flex; flex-direction:column; align-items:center;">
+                <div class="size-h3 color-highlight">{{ $running }}</div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2">
+                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                  <path d="m3.3 7 8.7 5 8.7-5"/>
+                  <path d="M12 22V12"/>
+                  <polygon points="16,12.75 16,22 24.25,17.875" fill="#22c55e" stroke="none"/>
+                </svg>
+              </div>
+
+              <div data-popover-type="text" data-popover-text="Stopped containers"
+                   style="flex:1; display:flex; flex-direction:column; align-items:center;">
+                <div class="size-h3 color-highlight">{{ $stopped }}</div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2">
+                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                  <path d="m3.3 7 8.7 5 8.7-5"/>
+                  <path d="M12 22V12"/>
+                  <rect x="16.0" y="13.75" width="8.25" height="8.25" fill="#ef4444" stroke="none"/>
+                </svg>
+              </div>
+
+              <div data-popover-type="html" data-popover-position="bottom" data-popover-margin="0.2rem"
+                   style="flex:1; display:flex; flex-direction:column; align-items:center;">
+                <div class="size-h3 color-highlight">{{ len $images }}</div>
+                <div data-popover-html="">
+                  <div style="margin-bottom:0.75rem;">Images</div>
+                  {{ $unused := 0 }}
+                  {{ $totalBytes := 0 }}
+                  {{ range $images }}
+                    {{ if eq (.Int "containers") 0 }}
+                      {{ $unused = add $unused 1 }}
+                    {{ end }}
+                    {{ $totalBytes = add $totalBytes (.Int "size") }}
+                  {{ end }}
+                  {{ $totalGB := div $totalBytes 1073741824 }}
+                  {{ $decimal := mod (div $totalBytes 1048576) 1024 }}
+                  <div style="display:flex; justify-content:space-between; gap:0.5rem;">
+                    <div>Unused images:</div>
+                    <div class="color-highlight">{{ $unused }}</div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; gap:0.5rem;">
+                    <div>Total size:</div>
+                    <div class="color-highlight">{{ printf "%d.%02d GB" $totalGB $decimal }}</div>
+                  </div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2" style="margin-top:0.25rem;">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <path d="M21 15l-5-5L5 21"/>
+                </svg>
+              </div>
+
+              <div data-popover-type="text" data-popover-text="Volumes"
+                   style="flex:1; display:flex; flex-direction:column; align-items:center;">
+                <div class="size-h3 color-highlight">{{ len $volumes }}</div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                  <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
+                  <path d="M3 12A9 3 0 0 0 21 12"/>
+                </svg>
+              </div>
+
+              <div data-popover-type="html" data-popover-margin="0.2rem" data-popover-position="bottom"
+                   style="flex:1; display:flex; flex-direction:column; align-items:center;">
+                <div data-popover-html="">
+                  <div style="margin-bottom:0.75rem;">Networks</div>
+                  {{ range $networks }}
+                    <div style="display:flex; justify-content:space-between; gap:1rem; min-width:220px;">
+                      <div class="size-h5 text-compact">{{ .String "name" }}</div>
+                      <div class="size-h5 color-highlight">
+                        {{ $cfg := .Array "ipam.config" }}
+                        {{ if gt (len $cfg) 0 }}
+                          {{ (index $cfg 0).String "subnet" }}
+                        {{ else }}
+                          --
+                        {{ end }}
+                      </div>
+                    </div>
+                  {{ end }}
+                </div>
+                <div class="size-h3 color-highlight">{{ len $networks }}</div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2">
+                  <rect x="16" y="16" width="6" height="6" rx="1"/>
+                  <rect x="2" y="16" width="6" height="6" rx="1"/>
+                  <rect x="9" y="2" width="6" height="6" rx="1"/>
+                  <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/>
+                  <path d="M12 12V8"/>
+                </svg>
+              </div>
+
+              <div data-popover-type="text" data-popover-text="Stacks"
+                   style="flex:1; display:flex; flex-direction:column; align-items:center;">
+                <div class="size-h3 color-highlight">{{ len $stacks }}</div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" stroke-width="2">
+                  <path d="M12 2 3 7l9 5 9-5-9-5z"/>
+                  <path d="M3 12l9 5 9-5"/>
+                  <path d="M3 17l9 5 9-5"/>
+                </svg>
+              </div>
+            </div>
+
     - size: full
       widgets:
         - type: split-column
@@ -341,6 +498,97 @@
                   {{ else }}
                     <p>Failed to fetch data (Status: {{ $indexData.Response.StatusCode }})</p>
                   {{ end }}
+                {{ end }}
+
+            - type: custom-api
+              title: Immich Stats
+              hide-header: true
+              cache: 10m
+              url: https://immich.${GROUND_DOMAIN}/api/server/statistics
+              headers:
+                x-api-key: ${IMMICH_API_KEY}
+              subrequests:
+                storage:
+                  url: https://immich.${GROUND_DOMAIN}/api/server/storage
+                  headers:
+                    x-api-key: ${IMMICH_API_KEY}
+              options:
+                show-cards: true
+                show-storage-bar: true
+              template: |
+                {{ $photos := .JSON.Int "photos" }}
+                {{ $videos := .JSON.Int "videos" }}
+                {{ $usageBytes := .JSON.Int "usage" }}
+                {{ $usageGiB := div (toFloat $usageBytes) 1073741824.0 }}
+                {{ $storage := .Subrequest "storage" }}
+                {{ $storage_ok := and (ge $storage.Response.StatusCode 200) (le $storage.Response.StatusCode 299) }}
+                {{ $totalGiB := 0.0 }}
+                {{ $percentage := 0.0 }}
+                {{ $storageError := "" }}
+                {{ if $storage_ok }}
+                  {{ $totalGiB = div (toFloat ($storage.JSON.Int "diskSizeRaw")) 1073741824.0 }}
+                  {{ $percentage = $storage.JSON.Float "diskUsagePercentage" }}
+                {{ else }}
+                  {{ $storageError = printf "%d %s" $storage.Response.StatusCode $storage.Response.Status }}
+                {{ end }}
+                {{ $showCards := .Options.BoolOr "show-cards" true }}
+                {{ $showStorageBar := .Options.BoolOr "show-storage-bar" true }}
+
+                {{ if $showCards }}
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;{{ if $showStorageBar }} margin-bottom: 16px;{{ end }}">
+                  <div style="display: flex; flex-direction: column; justify-content: space-between; background-color: var(--color-widget-background-highlight); border-radius: 12px; padding: 20px; flex: 1; min-width: 200px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                      <svg style="width: 40px; height: 40px; color: var(--color-primary); flex-shrink: 0;" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13.73,15L9.83,21.76C10.53,21.91 11.25,22 12,22C14.4,22 16.6,21.15 18.32,19.75L14.66,13.4M2.46,15C3.38,17.92 5.61,20.26 8.45,21.34L12.12,15M8.54,12L4.64,5.25C3,7 2,9.39 2,12C2,12.68 2.07,13.35 2.2,14H9.69M21.8,10H14.31L14.6,10.5L19.36,18.75C21,16.97 22,14.6 22,12C22,11.31 21.93,10.64 21.8,10M21.54,9C20.62,6.07 18.39,3.74 15.55,2.66L11.88,9M9.4,10.5L14.17,2.24C13.47,2.09 12.75,2 12,2C9.6,2 7.4,2.84 5.68,4.25L9.34,10.6L9.4,10.5Z"/>
+                      </svg>
+                      <span style="font-weight: 600; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-highlight);">Photos</span>
+                    </div>
+                    <div style="font-family: ui-monospace, monospace; font-size: 1.85rem; font-weight: 700; color: var(--color-text-highlight); word-break: break-all;">
+                      {{ if lt $photos 10 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">000000000</span>{{ else if lt $photos 100 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">00000000</span>{{ else if lt $photos 1000 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">0000000</span>{{ else if lt $photos 10000 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">000000</span>{{ else if lt $photos 100000 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">00000</span>{{ else if lt $photos 1000000 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">0000</span>{{ end }}{{ $photos }}
+                    </div>
+                  </div>
+
+                  <div style="display: flex; flex-direction: column; justify-content: space-between; background-color: var(--color-widget-background-highlight); border-radius: 12px; padding: 20px; flex: 1; min-width: 200px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                      <svg style="width: 40px; height: 40px; color: var(--color-primary); flex-shrink: 0;" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                      </svg>
+                      <span style="font-weight: 600; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-highlight);">Videos</span>
+                    </div>
+                    <div style="font-family: ui-monospace, monospace; font-size: 1.85rem; font-weight: 700; color: var(--color-text-highlight); word-break: break-all;">
+                      {{ if lt $videos 10 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">000000000</span>{{ else if lt $videos 100 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">00000000</span>{{ else if lt $videos 1000 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">0000000</span>{{ else if lt $videos 10000 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">000000</span>{{ else if lt $videos 100000 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">00000</span>{{ else if lt $videos 1000000 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">0000</span>{{ end }}{{ $videos }}
+                    </div>
+                  </div>
+
+                  <div style="display: flex; flex-direction: column; justify-content: space-between; background-color: var(--color-widget-background-highlight); border-radius: 12px; padding: 20px; flex: 1; min-width: 200px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                      <svg style="width: 40px; height: 40px; color: var(--color-primary); flex-shrink: 0;" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11,2V22C5.9,21.5 2,17.2 2,12C2,6.8 5.9,2.5 11,2M13,2V11H22C21.5,6.2 17.8,2.5 13,2M13,13V22C17.7,21.5 21.5,17.8 22,13H13Z"/>
+                      </svg>
+                      <span style="font-weight: 600; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-highlight);">Storage</span>
+                    </div>
+                    <div style="font-family: ui-monospace, monospace; font-size: 1.85rem; font-weight: 700; color: var(--color-text-highlight); word-break: break-all;">
+                      {{ $gib := printf "%.0f" $usageGiB }}
+                      {{ if lt $usageGiB 10.0 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">000000000</span>{{ else if lt $usageGiB 100.0 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">00000000</span>{{ else if lt $usageGiB 1000.0 }}<span style="color: var(--color-text-subdue); font-weight: 400; opacity: 0.6;">0000000</span>{{ end }}{{ $gib }}<span style="font-size: 1.5rem; font-weight: 500; color: var(--color-text-subdue); margin-left: 8px;">GiB</span>
+                    </div>
+                  </div>
+                </div>
+                {{ end }}
+
+                {{ if $showStorageBar }}
+                <div style="background-color: var(--color-widget-background-highlight); border-radius: 12px; padding: 20px;">
+                  <div style="font-weight: 600; color: var(--color-text-highlight); margin-bottom: 8px; font-size: 1.6rem;">Storage space</div>
+                  {{ if gt $totalGiB 0.0 }}
+                    <div style="color: var(--color-text-highlight); font-size: 1.4rem; margin-bottom: 12px; font-weight: 500;">{{ printf "%.1f" $usageGiB }} GiB of {{ printf "%.1f" $totalGiB }} GiB used</div>
+                    <div style="color: var(--color-text-subdue); font-size: 1.35rem; margin-bottom: 12px;">{{ printf "%.1f" $percentage }}% full</div>
+                  {{ else }}
+                    <div style="color: var(--color-text-highlight); font-size: 1.4rem; margin-bottom: 12px; font-weight: 500;">{{ printf "%.1f" $usageGiB }} GiB used</div>
+                    <div style="color: var(--color-text-negative); font-size: 1.35rem; margin-bottom: 12px;">Total storage unavailable ({{ $storageError }}). Ensure API key has permissions for /api/server/storage.</div>
+                  {{ end }}
+                  <div style="height: 12px; width: 100%; background-color: var(--color-text-subdue); border-radius: 6px; overflow: hidden; opacity: 0.2;">
+                    <div style="height: 100%; background-color: var(--color-primary); border-radius: 6px; transition: width 0.3s ease; width: {{ if gt $totalGiB 0.0 }}{{ printf "%.1f" $percentage }}%{{ else }}0%{{ end }};"></div>
+                  </div>
+                </div>
                 {{ end }}
 
             - type: custom-api
