@@ -101,9 +101,6 @@
               basic-auth:
                 username: glance
                 password: ${authentik_password}
-            - title: immich
-              url: https://immich.${GROUND_DOMAIN}
-              icon: /assets/icons/immich.svg
 
         - type: monitor
           cache: 8m
@@ -221,6 +218,17 @@
             - title: Vaultwarden admin
               url: https://vaultwarden.${GROUND_DOMAIN}/admin
               icon: /assets/icons/vaultwarden.svg
+
+        - type: monitor
+          cache: 8m
+          title: Immich
+          sites:
+            - title: immich
+              url: https://immich.${GROUND_DOMAIN}
+              icon: /assets/icons/immich.svg
+            - title: Immich Games
+              url: https://immich-games.${GROUND_DOMAIN}
+              icon: /assets/icons/immich-games.svg
 
         - type: docker-containers
           title: Media backend services
