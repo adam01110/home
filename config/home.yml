@@ -225,10 +225,13 @@
           sites:
             - title: immich
               url: https://immich.${GROUND_DOMAIN}
-              icon: /assets/icons/immich.svg
+              icon: /assets/icons/immich/icon.svg
+            - title: Immich Tools
+              url: https://immich-tools.${GROUND_DOMAIN}
+              icon: /assets/icons/immich/tools.svg
             - title: Immich Games
               url: https://immich-games.${GROUND_DOMAIN}
-              icon: /assets/icons/immich-games.svg
+              icon: /assets/icons/immich/games.svg
 
         - type: docker-containers
           title: Media backend services

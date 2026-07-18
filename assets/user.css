@@ -42,6 +42,8 @@
   a:is(
     [href^="https://jellyfin."],
     [href^="https://immich."],
+    [href^="https://immich-games."],
+    [href^="https://immich-tools."],
     [href^="https://seerr."],
     [href^="https://anonymous-overflow."],
     [href^="https://breezewiki."],
@@ -173,6 +175,14 @@
 
 .monitor-site:has(a[href^="https://immich."]) {
   --service-tooltip: "Photo and video library.";
+}
+
+.monitor-site:has(a[href^="https://immich-games."]) {
+  --service-tooltip: "Games and challenges for Immich photos.";
+}
+
+.monitor-site:has(a[href^="https://immich-tools."]) {
+  --service-tooltip: "Bulk tools for organizing Immich people, albums, locations, and metadata.";
 }
 
 .monitor-site:has(a[href^="https://seerr."]) {
