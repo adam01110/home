@@ -71,17 +71,6 @@
       widgets:
         - type: monitor
           cache: 8m
-          title: Sync services
-          sites:
-            - title: Atuin
-              url: https://atuin.${GROUND_DOMAIN}
-              icon: /assets/icons/atuin.svg
-            - title: Firefox sync
-              url: https://firefox-sync.${GROUND_DOMAIN}
-              icon: /assets/icons/firefox.svg
-
-        - type: monitor
-          cache: 8m
           title: Nix
           sites:
             - title: Nix cache proxy
@@ -222,19 +211,29 @@
               url: https://vaultwarden.${GROUND_DOMAIN}/admin
               icon: /assets/icons/vaultwarden.svg
 
-        - type: monitor
-          cache: 8m
-          title: Immich
-          sites:
-            - title: immich
-              url: https://immich.${GROUND_DOMAIN}
-              icon: /assets/icons/immich/icon.svg
-            - title: Immich Tools
-              url: https://immich-tools.${GROUND_DOMAIN}
-              icon: /assets/icons/immich/tools.svg
-            - title: Immich Games
-              url: https://immich-games.${GROUND_DOMAIN}
-              icon: /assets/icons/immich/games.svg
+        - type: split-column
+          widgets:
+            - type: monitor
+              cache: 8m
+              title: Immich
+              sites:
+                - title: immich
+                  url: https://immich.${GROUND_DOMAIN}
+                  icon: /assets/icons/immich/icon.svg
+                - title: Immich Tools
+                  url: https://immich-tools.${GROUND_DOMAIN}
+                  icon: /assets/icons/immich/tools.svg
+
+            - type: monitor
+              cache: 8m
+              title: Sync services
+              sites:
+                - title: Atuin
+                  url: https://atuin.${GROUND_DOMAIN}
+                  icon: /assets/icons/atuin.svg
+                - title: Firefox sync
+                  url: https://firefox-sync.${GROUND_DOMAIN}
+                  icon: /assets/icons/firefox.svg
 
         - type: docker-containers
           title: Media backend services
