@@ -32,6 +32,12 @@
               basic-auth:
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
+            - title: Rimgo
+              url: https://rimgo.${GROUND_DOMAIN}
+              icon: /assets/icons/rimgo.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
 
         - type: monitor
           cache: 8m

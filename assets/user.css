@@ -46,6 +46,7 @@
     [href^="https://seerr."],
     [href^="https://anonymous-overflow."],
     [href^="https://breezewiki."],
+    [href^="https://rimgo."],
     [href^="https://vaultwarden."]:not([href$="/admin"]),
     [href^="https://gotify."],
     [href^="https://authentik."],
@@ -195,6 +196,10 @@
 
 .monitor-site:has(a[href^="https://breezewiki."]) {
   --service-tooltip: "Cleaner Fandom wiki viewer with reduced tracking.";
+}
+
+.monitor-site:has(a[href^="https://rimgo."]) {
+  --service-tooltip: "Privacy-friendly alternative frontend for Imgur.";
 }
 
 .monitor-site:has(a[href^="https://atuin."]) {
