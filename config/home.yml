@@ -106,6 +106,9 @@
           cache: 8m
           title: Other
           sites:
+            - title: Excalidash
+              url: https://excalidash.${GROUND_DOMAIN}
+              icon: /assets/icons/excalidash.svg
             - title: Vaultwarden
               url: https://vaultwarden.${GROUND_DOMAIN}
               icon: /assets/icons/vaultwarden.svg

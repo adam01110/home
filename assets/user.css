@@ -51,6 +51,7 @@
     [href^="https://gotify."],
     [href^="https://authentik."],
     [href^="https://copyparty."],
+    [href^="https://excalidash."],
     [href^="https://speedtest."],
     [href^="https://beszel."],
     [href^="https://shelfmark."],
@@ -235,6 +236,10 @@
 
 .monitor-site:has(a[href^="https://copyparty."]) {
   --service-tooltip: "Web file browser for uploads, downloads, and sharing.";
+}
+
+.monitor-site:has(a[href^="https://excalidash."]) {
+  --service-tooltip: "Collaborative virtual whiteboard for diagrams and sketches.";
 }
 
 .monitor-site:has(a[href^="https://speedtest."]) {
