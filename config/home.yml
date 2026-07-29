@@ -59,6 +59,8 @@
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
 
+    - size: small
+      widgets:
         - type: monitor
           cache: 8m
           title: ATmosphere
@@ -73,8 +75,6 @@
               url: https://spindle.${GROUND_DOMAIN}
               icon: /assets/icons/spindle.svg
 
-    - size: small
-      widgets:
         - type: monitor
           cache: 8m
           title: Nix
