@@ -77,7 +77,7 @@
 
         - type: monitor
           cache: 8m
-          title: Nix
+          title: files
           sites:
             - title: Nix cache proxy
               url: https://ncps.${GROUND_DOMAIN}
@@ -85,11 +85,6 @@
               basic-auth:
                 username: nix
                 password: ${NCPS_TOKEN}
-
-        - type: monitor
-          cache: 8m
-          title: files
-          sites:
             - title: copyparty
               url: https://copyparty.${GROUND_DOMAIN}
               icon: /assets/icons/copyparty.svg
@@ -113,6 +108,17 @@
             - title: Tiny Tiny RSS
               url: https://ttrss.${GROUND_DOMAIN}
               icon: /assets/icons/tiny-tiny-rss.svg
+
+        - type: monitor
+          cache: 8m
+          title: Immich
+          sites:
+            - title: immich
+              url: https://immich.${GROUND_DOMAIN}
+              icon: /assets/icons/immich/icon.svg
+            - title: Immich Tools
+              url: https://immich-tools.${GROUND_DOMAIN}
+              icon: /assets/icons/immich/tools.svg
 
     - size: full
       widgets:
@@ -205,17 +211,6 @@
             - title: Vaultwarden admin
               url: https://vaultwarden.${GROUND_DOMAIN}/admin
               icon: /assets/icons/vaultwarden.svg
-
-        - type: monitor
-          cache: 8m
-          title: Immich
-          sites:
-            - title: immich
-              url: https://immich.${GROUND_DOMAIN}
-              icon: /assets/icons/immich/icon.svg
-            - title: Immich Tools
-              url: https://immich-tools.${GROUND_DOMAIN}
-              icon: /assets/icons/immich/tools.svg
 
         - type: split-column
           widgets:
