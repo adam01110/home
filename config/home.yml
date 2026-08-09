@@ -206,20 +206,19 @@
               url: https://vaultwarden.${GROUND_DOMAIN}/admin
               icon: /assets/icons/vaultwarden.svg
 
-        - type: split-column
-          max-columns: 3
-          widgets:
-            - type: monitor
-              cache: 8m
-              title: Immich
-              sites:
-                - title: immich
-                  url: https://immich.${GROUND_DOMAIN}
-                  icon: /assets/icons/immich/icon.svg
-                - title: Immich Tools
-                  url: https://immich-tools.${GROUND_DOMAIN}
-                  icon: /assets/icons/immich/tools.svg
+        - type: monitor
+          cache: 8m
+          title: Immich
+          sites:
+            - title: immich
+              url: https://immich.${GROUND_DOMAIN}
+              icon: /assets/icons/immich/icon.svg
+            - title: Immich Tools
+              url: https://immich-tools.${GROUND_DOMAIN}
+              icon: /assets/icons/immich/tools.svg
 
+        - type: split-column
+          widgets:
             - type: monitor
               cache: 8m
               title: Sync services
