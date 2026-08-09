@@ -114,17 +114,6 @@
               url: https://ttrss.${GROUND_DOMAIN}
               icon: /assets/icons/tiny-tiny-rss.svg
 
-        - type: monitor
-          cache: 8m
-          title: Notifications
-          sites:
-            - title: Gotify
-              url: https://gotify.${GROUND_DOMAIN}
-              icon: /assets/icons/gotify.svg
-            - title: Apprise
-              url: https://apprise.${GROUND_DOMAIN}
-              icon: /assets/icons/apprise.svg
-
     - size: full
       widgets:
         - type: monitor
@@ -218,6 +207,7 @@
               icon: /assets/icons/vaultwarden.svg
 
         - type: split-column
+          max-columns: 3
           widgets:
             - type: monitor
               cache: 8m
@@ -240,6 +230,17 @@
                 - title: Firefox sync
                   url: https://firefox-sync.${GROUND_DOMAIN}
                   icon: /assets/icons/firefox.svg
+
+            - type: monitor
+              cache: 8m
+              title: Notifications
+              sites:
+                - title: Gotify
+                  url: https://gotify.${GROUND_DOMAIN}
+                  icon: /assets/icons/gotify.svg
+                - title: Apprise
+                  url: https://apprise.${GROUND_DOMAIN}
+                  icon: /assets/icons/apprise.svg
 
         - type: docker-containers
           title: Media backend services
