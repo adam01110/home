@@ -326,7 +326,9 @@
   --service-tooltip: "Web traffic routing and load balancing.";
 }
 
-.monitor-site:has(a[href^="https://app.crowdsec.net/security-engines"]) {
+.monitor-site:has(
+  a:is([href^="https://crowdsec."], [href^="https://app.crowdsec.net/security-engines"])
+) {
   --service-tooltip: "CrowdSec security engine activity and enrolled machines.";
 }
 

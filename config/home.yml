@@ -206,6 +206,9 @@
               url: https://traefik.${GROUND_DOMAIN}
               icon: /assets/icons/traefik.svg
             - title: CrowdSec
+              url: https://crowdsec.${GROUND_DOMAIN}
+              icon: /assets/icons/crowdsec.svg
+            - title: CrowdSec Console
               url: https://app.crowdsec.net/security-engines
               icon: /assets/icons/crowdsec.svg
             - title: Vaultwarden admin
