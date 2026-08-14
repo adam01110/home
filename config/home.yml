@@ -105,8 +105,9 @@
               basic-auth:
                 username: glance
                 password: ${authentik_password}
-            - title: Versity
+            - title: Versity for Hold
               url: https://atcr-versity.${GROUND_DOMAIN}
+              check-url: https://atcr-versity.${GROUND_DOMAIN}/health
               icon: /assets/icons/versity.svg
 
         - type: monitor
@@ -300,15 +301,15 @@
             atcr-versity-init-1:
               name: Versity initialization
               description: Creates the S3 bucket used by Hold.
-              icon: /assets/icons/versity.svg
+              icon: /assets/icons/versity.svg?completed
               hide: false
             ncps-create-directories-1:
               name: NCPS directory initialization
               description: Creates the directories used by NCPS.
-              icon: /assets/icons/ncps.svg
+              icon: /assets/icons/ncps.svg?completed
               hide: false
             ncps-migrate-database-1:
               name: NCPS database migration
               description: Applies database migrations for NCPS.
-              icon: /assets/icons/ncps.svg
+              icon: /assets/icons/ncps.svg?completed
               hide: false

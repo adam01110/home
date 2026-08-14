@@ -18,6 +18,20 @@
   height: 20px;
 }
 
+.docker-container:has(.docker-container-icon[src$="?completed"]) .docker-container-status-icon {
+  display: none;
+}
+
+.docker-container:has(.docker-container-icon[src$="?completed"]) > .margin-left-auto::after {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-positive);
+  content: "";
+  mask: url("/assets/icons/status/check.svg") center / contain no-repeat;
+  -webkit-mask: url("/assets/icons/status/check.svg") center / contain no-repeat;
+}
+
 .server-spicy-cpu-icon {
   width: 1.2em;
   height: 1.2em;
