@@ -26,10 +26,10 @@
   display: block;
   width: 2rem;
   height: 2rem;
-  background: var(--color-positive);
+  background: hsl(34, 95%, 55%);
   content: "";
-  mask: url("/assets/icons/status/check.svg") center / contain no-repeat;
-  -webkit-mask: url("/assets/icons/status/check.svg") center / contain no-repeat;
+  mask: url("/assets/icons/status/square-check.svg") center / contain no-repeat;
+  -webkit-mask: url("/assets/icons/status/square-check.svg") center / contain no-repeat;
 }
 
 .server-spicy-cpu-icon {
@@ -85,13 +85,16 @@
     [href^="https://knot."],
     [href^="https://spindle."],
     [href^="https://atcr-hold."],
-    [href^="https://atcr-versity."],
     [href^="https://ncps."]
   )
 ) {
   --access-icon: url("/assets/icons/status/warning.svg");
   --access-color: hsl(34, 95%, 55%);
   --access-tooltip: "Ask for invite.";
+}
+
+.monitor-site:has(a[href^="https://atcr-versity."]) {
+  --access-tooltip: "Requires Hold access.";
 }
 
 .monitor-site {

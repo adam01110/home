@@ -81,10 +81,10 @@
               icon: /assets/icons/atproto.svg
             - title: Knot
               url: https://knot.${GROUND_DOMAIN}
-              icon: /assets/icons/knot.svg
+              icon: /assets/icons/dolly.svg
             - title: Spindle
               url: https://spindle.${GROUND_DOMAIN}
-              icon: /assets/icons/spindle.svg
+              icon: /assets/icons/dolly.svg
             - title: Hold
               url: https://atcr-hold.${GROUND_DOMAIN}
               icon: /assets/icons/atcr.svg
