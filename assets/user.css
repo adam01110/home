@@ -70,17 +70,13 @@
     [href^="https://pds."],
     [href^="https://knot."],
     [href^="https://spindle."],
+    [href^="https://atcr-hold."],
+    [href^="https://atcr-versity."],
     [href^="https://ncps."]
   )
 ) {
   --access-icon: url("/assets/icons/status/warning.svg");
   --access-color: hsl(34, 95%, 55%);
-  --access-tooltip: "Ask for account creation.";
-}
-
-.monitor-site:has(
-  a:is([href^="https://pds."], [href^="https://knot."], [href^="https://spindle."])
-) {
   --access-tooltip: "Ask for invite.";
 }
 
@@ -232,6 +228,14 @@
 
 .monitor-site:has(a[href^="https://spindle."]) {
   --service-tooltip: "Tangled CI runner for repository pipelines.";
+}
+
+.monitor-site:has(a[href^="https://atcr-hold."]) {
+  --service-tooltip: "Blob storage service for ATCR container image layers.";
+}
+
+.monitor-site:has(a[href^="https://atcr-versity."]) {
+  --service-tooltip: "S3-compatible object storage gateway backed by the local filesystem.";
 }
 
 .monitor-site:has(a[href^="https://copyparty."]) {

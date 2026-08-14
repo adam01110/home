@@ -59,6 +59,17 @@
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
 
+        - type: monitor
+          cache: 8m
+          title: Immich
+          sites:
+            - title: immich
+              url: https://immich.${GROUND_DOMAIN}
+              icon: /assets/icons/immich/icon.svg
+            - title: Immich Tools
+              url: https://immich-tools.${GROUND_DOMAIN}
+              icon: /assets/icons/immich/tools.svg
+
     - size: small
       widgets:
         - type: monitor
@@ -74,6 +85,9 @@
             - title: Spindle
               url: https://spindle.${GROUND_DOMAIN}
               icon: /assets/icons/spindle.svg
+            - title: Hold
+              url: https://atcr-hold.${GROUND_DOMAIN}
+              icon: /assets/icons/atcr.svg
 
         - type: monitor
           cache: 8m
@@ -91,6 +105,9 @@
               basic-auth:
                 username: glance
                 password: ${authentik_password}
+            - title: Versity
+              url: https://atcr-versity.${GROUND_DOMAIN}
+              icon: /assets/icons/versity.svg
 
         - type: monitor
           cache: 8m
@@ -108,17 +125,6 @@
             - title: Tiny Tiny RSS
               url: https://ttrss.${GROUND_DOMAIN}
               icon: /assets/icons/tiny-tiny-rss.svg
-
-        - type: monitor
-          cache: 8m
-          title: Immich
-          sites:
-            - title: immich
-              url: https://immich.${GROUND_DOMAIN}
-              icon: /assets/icons/immich/icon.svg
-            - title: Immich Tools
-              url: https://immich-tools.${GROUND_DOMAIN}
-              icon: /assets/icons/immich/tools.svg
 
     - size: full
       widgets:
@@ -245,7 +251,7 @@
           hide-by-default: true
           containers:
             media-unpackerr-1:
-              format-container-names: true
+              name: Unpackerr
               description: Automated archive extractions.
               icon: /assets/icons/unpackerr.png
               hide: false
@@ -279,4 +285,30 @@
               name: Redis for Immich
               description: In-memory data store for caching and queues, used by Immich.
               icon: /assets/icons/redis.svg
+              hide: false
+
+        - type: docker-containers
+          title: Other backend services
+          running-only: false
+          hide-by-default: true
+          containers:
+            atcr-scanner-1:
+              name: Scanner for ATCR
+              description: Scans ATCR container images for vulnerabilities.
+              icon: /assets/icons/atcr.svg
+              hide: false
+            atcr-versity-init-1:
+              name: Versity initialization
+              description: Creates the S3 bucket used by Hold.
+              icon: /assets/icons/versity.svg
+              hide: false
+            ncps-create-directories-1:
+              name: NCPS directory initialization
+              description: Creates the directories used by NCPS.
+              icon: /assets/icons/ncps.svg
+              hide: false
+            ncps-migrate-database-1:
+              name: NCPS database migration
+              description: Applies database migrations for NCPS.
+              icon: /assets/icons/ncps.svg
               hide: false
