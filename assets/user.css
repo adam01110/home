@@ -84,7 +84,7 @@
     [href^="https://pds."],
     [href^="https://knot."],
     [href^="https://spindle."],
-    [href^="https://atcr-hold."],
+    [href^="https://hold."],
     [href^="https://ncps."]
   )
 ) {
@@ -93,7 +93,7 @@
   --access-tooltip: "Ask for invite.";
 }
 
-.monitor-site:has(a[href^="https://atcr-versity."]) {
+.monitor-site:has(a[href^="https://hold-versity."]) {
   --access-tooltip: "Requires Hold access.";
 }
 
@@ -247,11 +247,11 @@
   --service-tooltip: "Tangled CI runner for repository pipelines.";
 }
 
-.monitor-site:has(a[href^="https://atcr-hold."]) {
+.monitor-site:has(a[href^="https://hold."]) {
   --service-tooltip: "Blob storage service for ATCR container image layers.";
 }
 
-.monitor-site:has(a[href^="https://atcr-versity."]) {
+.monitor-site:has(a[href^="https://hold-versity."]) {
   --service-tooltip: "S3-compatible object storage gateway backed by the local filesystem.";
 }
 

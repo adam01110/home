@@ -86,7 +86,7 @@
               url: https://spindle.${GROUND_DOMAIN}
               icon: /assets/icons/dolly.svg
             - title: Hold
-              url: https://atcr-hold.${GROUND_DOMAIN}
+              url: https://hold.${GROUND_DOMAIN}
               icon: /assets/icons/atcr.svg
 
         - type: monitor
@@ -106,8 +106,8 @@
                 username: glance
                 password: ${authentik_password}
             - title: Versity for Hold
-              url: https://atcr-versity.${GROUND_DOMAIN}
-              check-url: https://atcr-versity.${GROUND_DOMAIN}/health
+              url: https://hold-versity.${GROUND_DOMAIN}
+              check-url: https://hold-versity.${GROUND_DOMAIN}/health
               icon: /assets/icons/versity.svg
 
         - type: monitor
