@@ -316,7 +316,7 @@
             beszel-agent-1:
               name: Beszel agent
               description: Collects host and container metrics for Beszel.
-              icon: /assets/icons/beszel/server.svg
+              icon: /assets/icons/beszel/icon.svg
               hide: false
             copyparty-xdg-seeder-1:
               name: Copyparty XDG seeder
@@ -331,7 +331,7 @@
             glance-updater-1:
               name: Glance updater
               description: Updates Glance from authenticated repository webhooks.
-              icon: /assets/icons/dolly.svg
+              icon: /assets/icons/glance.svg
               hide: false
             ncps-create-directories-1:
               name: NCPS directory initialization
@@ -353,6 +353,12 @@
               description: Relays Tangled repository events from Knot.
               icon: /assets/icons/dolly.svg
               hide: false
+
+        - type: docker-containers
+          title: Tiny Tiny RSS backend services
+          running-only: false
+          hide-by-default: true
+          containers:
             ttrss-parser-1:
               name: Parser for Tiny Tiny RSS
               description: Extracts readable article content for Tiny Tiny RSS.
