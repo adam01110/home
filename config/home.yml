@@ -266,6 +266,11 @@
               description: In-memory data store for caching and queues, used by Tracearr.
               icon: /assets/icons/redis.svg
               hide: false
+            media-translator-1:
+              name: Subtitle translator
+              description: Translates subtitles for the media library.
+              icon: /assets/icons/bazarr.svg
+              hide: false
 
         - type: docker-containers
           title: Immich backend services
@@ -303,6 +308,31 @@
               description: Creates the S3 bucket used by Hold.
               icon: /assets/icons/versity.svg?completed
               hide: false
+            atuin-ai-1:
+              name: Atuin AI
+              description: Provides AI-assisted shell history search for Atuin.
+              icon: /assets/icons/atuin.svg
+              hide: false
+            beszel-agent-1:
+              name: Beszel agent
+              description: Collects host and container metrics for Beszel.
+              icon: /assets/icons/beszel/server.svg
+              hide: false
+            copyparty-xdg-seeder-1:
+              name: Copyparty XDG seeder
+              description: Seeds the XDG directories used by Copyparty.
+              icon: /assets/icons/copyparty.svg
+              hide: false
+            excalidash-backend-1:
+              name: Excalidash backend
+              description: Stores and synchronizes Excalidash boards.
+              icon: /assets/icons/excalidash.svg
+              hide: false
+            glance-updater-1:
+              name: Glance updater
+              description: Updates Glance from authenticated repository webhooks.
+              icon: /assets/icons/dolly.svg
+              hide: false
             ncps-create-directories-1:
               name: NCPS directory initialization
               description: Creates the directories used by NCPS.
@@ -312,4 +342,29 @@
               name: NCPS database migration
               description: Applies database migrations for NCPS.
               icon: /assets/icons/ncps.svg?completed
+              hide: false
+            pds-redis-1:
+              name: Redis for PDS
+              description: In-memory data store used by the AT Protocol personal data server.
+              icon: /assets/icons/redis.svg
+              hide: false
+            tangled-knot-events-1:
+              name: Knot events
+              description: Relays Tangled repository events from Knot.
+              icon: /assets/icons/dolly.svg
+              hide: false
+            ttrss-parser-1:
+              name: Parser for Tiny Tiny RSS
+              description: Extracts readable article content for Tiny Tiny RSS.
+              icon: /assets/icons/tiny-tiny-rss.svg
+              hide: false
+            ttrss-ttrss-1:
+              name: Tiny Tiny RSS backend
+              description: Processes feeds and serves the Tiny Tiny RSS application.
+              icon: /assets/icons/tiny-tiny-rss.svg
+              hide: false
+            ttrss-updater-1:
+              name: Tiny Tiny RSS updater
+              description: Runs scheduled feed updates for Tiny Tiny RSS.
+              icon: /assets/icons/tiny-tiny-rss.svg
               hide: false
