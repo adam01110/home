@@ -19,11 +19,62 @@
 }
 
 .docker-container {
+  --description-tooltip-left: 1.35rem;
+  --description-tooltip-translate-x: -50%;
+  --description-tooltip-edge-offset: var(
+    --widget-content-horizontal-padding,
+    var(--content-bounds-padding, 0.8rem)
+  );
   position: relative;
   display: grid;
   grid-template-columns: 2.7rem minmax(0, 1fr) auto;
   column-gap: 1.5rem;
   row-gap: 0.2rem;
+}
+
+@container widget (max-width: 599px) {
+  .dynamic-columns > .docker-container {
+    --description-tooltip-translate-x: max(
+      -50%,
+      calc(-1 * var(--description-tooltip-left) - var(--description-tooltip-edge-offset))
+    );
+  }
+}
+
+@container widget (min-width: 600px) and (max-width: 849px) {
+  .dynamic-columns > .docker-container:nth-child(2n + 1) {
+    --description-tooltip-translate-x: max(
+      -50%,
+      calc(-1 * var(--description-tooltip-left) - var(--description-tooltip-edge-offset))
+    );
+  }
+}
+
+@container widget (min-width: 850px) and (max-width: 1249px) {
+  .dynamic-columns > .docker-container:nth-child(3n + 1) {
+    --description-tooltip-translate-x: max(
+      -50%,
+      calc(-1 * var(--description-tooltip-left) - var(--description-tooltip-edge-offset))
+    );
+  }
+}
+
+@container widget (min-width: 1250px) and (max-width: 1499px) {
+  .dynamic-columns > .docker-container:nth-child(4n + 1) {
+    --description-tooltip-translate-x: max(
+      -50%,
+      calc(-1 * var(--description-tooltip-left) - var(--description-tooltip-edge-offset))
+    );
+  }
+}
+
+@container widget (min-width: 1500px) {
+  .dynamic-columns > .docker-container:nth-child(5n + 1) {
+    --description-tooltip-translate-x: max(
+      -50%,
+      calc(-1 * var(--description-tooltip-left) - var(--description-tooltip-edge-offset))
+    );
+  }
 }
 
 .docker-container > .shrink-0:first-child {
@@ -45,7 +96,7 @@
 .docker-container > .min-width-0.grow > :nth-child(2) {
   position: absolute;
   bottom: calc(100% + 0.8rem);
-  left: 0;
+  left: var(--description-tooltip-left);
   z-index: 21;
   width: max-content;
   max-width: min(26rem, calc(100vw - 1.6rem));
@@ -61,13 +112,14 @@
   box-shadow: 0 0.8rem 2rem hsl(0 0% 0% / 0.25);
   opacity: 0;
   pointer-events: none;
-  transform: translateY(0.8rem);
+  transform: translate(var(--description-tooltip-translate-x), 0.8rem);
 }
 
-.docker-container > .min-width-0.grow > :nth-child(2)::after {
+.docker-container::before {
   position: absolute;
-  top: 100%;
-  left: 1.35rem;
+  bottom: calc(100% + 0.8rem - 5px);
+  left: var(--description-tooltip-left);
+  z-index: 22;
   width: 10px;
   height: 10px;
   border-top: 1px solid var(--color-popover-border);
@@ -75,12 +127,20 @@
   border-top-left-radius: 2px;
   background: var(--color-popover-background);
   content: "";
-  transform: translate(-50%, -50%) rotate(-135deg);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.8rem) rotate(-135deg);
+}
+
+.docker-container:has(> .shrink-0:first-child.popover-active)::before {
+  opacity: 1;
+  transform: translate(-50%, 0) rotate(-135deg);
+  animation: dockerDescriptionArrowEntrance 0.3s backwards cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .docker-container:has(> .shrink-0:first-child.popover-active) > .min-width-0.grow > :nth-child(2) {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(var(--description-tooltip-translate-x), 0);
   animation: dockerDescriptionEntrance 0.3s backwards cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -113,7 +173,14 @@ body:has(.docker-container > .shrink-0:first-child.popover-active) > .popover-co
 @keyframes dockerDescriptionEntrance {
   from {
     opacity: 0;
-    transform: translateY(0.8rem);
+    transform: translate(var(--description-tooltip-translate-x), 0.8rem);
+  }
+}
+
+@keyframes dockerDescriptionArrowEntrance {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 0.8rem) rotate(-135deg);
   }
 }
 
@@ -239,22 +306,20 @@ body:has(.docker-container > .shrink-0:first-child.popover-active) > .popover-co
   }
 }
 
-@media (max-width: 599px) {
-  @container widget (max-width: 599px) {
-    .monitor-site {
-      --tooltip-widget-edge-offset: var(
-        --widget-content-horizontal-padding,
-        var(--content-bounds-padding, 0.8rem)
-      );
-      --service-tooltip-translate-x: max(
-        -50%,
-        calc(-1 * var(--service-tooltip-left) - var(--tooltip-widget-edge-offset))
-      );
-      --access-tooltip-translate-x: min(
-        -50%,
-        calc(-100% + var(--access-tooltip-anchor-right) + var(--tooltip-widget-edge-offset))
-      );
-    }
+@container widget (max-width: 599px) {
+  .monitor-site {
+    --tooltip-widget-edge-offset: var(
+      --widget-content-horizontal-padding,
+      var(--content-bounds-padding, 0.8rem)
+    );
+    --service-tooltip-translate-x: max(
+      -50%,
+      calc(-1 * var(--service-tooltip-left) - var(--tooltip-widget-edge-offset))
+    );
+    --access-tooltip-translate-x: min(
+      -50%,
+      calc(-100% + var(--access-tooltip-anchor-right) + var(--tooltip-widget-edge-offset))
+    );
   }
 }
 
