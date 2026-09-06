@@ -18,6 +18,105 @@
   height: 20px;
 }
 
+.docker-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.7rem minmax(0, 1fr) auto;
+  column-gap: 1.5rem;
+  row-gap: 0.2rem;
+}
+
+.docker-container > .shrink-0:first-child {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  align-self: center;
+  cursor: help;
+}
+
+.docker-container > .min-width-0.grow {
+  display: contents;
+}
+
+.docker-container > .min-width-0.grow > :first-child {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.docker-container > .min-width-0.grow > :nth-child(2) {
+  position: absolute;
+  bottom: calc(100% + 0.8rem);
+  left: 0;
+  z-index: 21;
+  width: max-content;
+  max-width: min(26rem, calc(100vw - 1.6rem));
+  padding: 0.6rem 0.8rem;
+  overflow: visible;
+  border: 1px solid var(--color-popover-border);
+  border-radius: var(--border-radius);
+  background: var(--color-popover-background);
+  color: var(--color-text-highlight);
+  font-size: 1.2rem;
+  line-height: 1.35;
+  white-space: normal;
+  box-shadow: 0 0.8rem 2rem hsl(0 0% 0% / 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.8rem);
+}
+
+.docker-container > .min-width-0.grow > :nth-child(2)::after {
+  position: absolute;
+  top: 100%;
+  left: 1.35rem;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid var(--color-popover-border);
+  border-left: 1px solid var(--color-popover-border);
+  border-top-left-radius: 2px;
+  background: var(--color-popover-background);
+  content: "";
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.docker-container:has(> .shrink-0:first-child.popover-active) > .min-width-0.grow > :nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  animation: dockerDescriptionEntrance 0.3s backwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body:has(.docker-container > .shrink-0:first-child.popover-active) > .popover-container {
+  display: none !important;
+}
+
+.docker-container > .margin-left-auto {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  align-self: center;
+}
+
+.docker-container > .visually-hidden {
+  position: static;
+  grid-column: 2;
+  grid-row: 2;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  clip-path: none;
+}
+
+.docker-container > .visually-hidden::before {
+  content: attr(aria-label);
+}
+
+@keyframes dockerDescriptionEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(0.8rem);
+  }
+}
+
 .docker-container:has(.docker-container-icon[src$="?completed"]) .docker-container-status-icon {
   display: none;
 }
