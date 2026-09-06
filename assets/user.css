@@ -32,8 +32,17 @@
   row-gap: 0.2rem;
 }
 
+.dynamic-columns > .docker-container {
+  --description-tooltip-left: calc(var(--widget-content-horizontal-padding) + 1.35rem);
+}
+
+.dynamic-columns > .docker-container:first-child {
+  --description-tooltip-left: 1.35rem;
+}
+
 @container widget (max-width: 599px) {
   .dynamic-columns > .docker-container {
+    --description-tooltip-left: 1.35rem;
     --description-tooltip-translate-x: max(
       -50%,
       calc(-1 * var(--description-tooltip-left) - var(--description-tooltip-edge-offset))
@@ -43,6 +52,7 @@
 
 @container widget (min-width: 600px) and (max-width: 849px) {
   .dynamic-columns > .docker-container:nth-child(2n + 1) {
+    --description-tooltip-left: 1.35rem;
     --description-tooltip-translate-x: max(
       -50%,
       calc(-1 * var(--description-tooltip-left) - var(--description-tooltip-edge-offset))
@@ -52,6 +62,7 @@
 
 @container widget (min-width: 850px) and (max-width: 1249px) {
   .dynamic-columns > .docker-container:nth-child(3n + 1) {
+    --description-tooltip-left: 1.35rem;
     --description-tooltip-translate-x: max(
       -50%,
       calc(-1 * var(--description-tooltip-left) - var(--description-tooltip-edge-offset))
@@ -61,6 +72,7 @@
 
 @container widget (min-width: 1250px) and (max-width: 1499px) {
   .dynamic-columns > .docker-container:nth-child(4n + 1) {
+    --description-tooltip-left: 1.35rem;
     --description-tooltip-translate-x: max(
       -50%,
       calc(-1 * var(--description-tooltip-left) - var(--description-tooltip-edge-offset))
@@ -70,6 +82,7 @@
 
 @container widget (min-width: 1500px) {
   .dynamic-columns > .docker-container:nth-child(5n + 1) {
+    --description-tooltip-left: 1.35rem;
     --description-tooltip-translate-x: max(
       -50%,
       calc(-1 * var(--description-tooltip-left) - var(--description-tooltip-edge-offset))
