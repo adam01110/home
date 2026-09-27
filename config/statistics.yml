@@ -363,23 +363,27 @@
                 <img class="dockhand-icon" src="/assets/icons/dockhand/volumes.svg" alt="">
               </div>
 
-              <div data-popover-type="html" data-popover-margin="0.2rem" data-popover-position="bottom" data-popover-max-width="650px"
+              <div data-popover-type="html" data-popover-margin="0.2rem" data-popover-position="bottom"
                    style="flex:1; display:flex; flex-direction:column; align-items:center;">
                 <div data-popover-html="" style="white-space:nowrap; width:max-content;">
                   <div style="margin-bottom:0.75rem;">Networks</div>
+                  {{ $userDefined := 0 }}
+                  {{ $system := 0 }}
                   {{ range $networks }}
-                    <div style="display:grid; grid-template-columns:max-content max-content; justify-content:space-between; gap:1rem; min-width:220px; white-space:nowrap;">
-                      <div class="size-h5 text-compact" style="white-space:nowrap;">{{ .String "name" }}</div>
-                      <div class="size-h5 color-highlight" style="white-space:nowrap;">
-                        {{ $cfg := .Array "ipam.config" }}
-                        {{ if gt (len $cfg) 0 }}
-                          {{ (index $cfg 0).String "subnet" }}
-                        {{ else }}
-                          --
-                        {{ end }}
-                      </div>
-                    </div>
+                    {{ if gt (len (.Array "containers")) 0 }}
+                      {{ $userDefined = add $userDefined 1 }}
+                    {{ else }}
+                      {{ $system = add $system 1 }}
+                    {{ end }}
                   {{ end }}
+                  <div style="display:flex; justify-content:space-between; gap:0.5rem;">
+                    <div>In use:</div>
+                    <div class="color-highlight">{{ $userDefined }}</div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; gap:0.5rem;">
+                    <div>Unused:</div>
+                    <div class="color-highlight">{{ $system }}</div>
+                  </div>
                 </div>
                 <div class="size-h3 color-highlight">{{ len $networks }}</div>
                 <img class="dockhand-icon" src="/assets/icons/dockhand/networks.svg" alt="">
