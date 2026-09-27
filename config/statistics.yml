@@ -15,10 +15,11 @@
             {{- if or (eq $url "") (eq $key "") -}}
               <p>Error: The URL or API key was not configured in the widget options.</p>
             {{- else -}}
+              {{- $auth := printf "MediaBrowser Token=\"%s\"" $key -}}
               {{- $countsUrl := printf "%s/Items/Counts" $url -}}
-              {{- $jellyfinData := newRequest $countsUrl | withHeader "X-Api-Key" $key | getResponse -}}
+              {{- $jellyfinData := newRequest $countsUrl | withHeader "Authorization" $auth | getResponse -}}
               {{- $audiobooksUrl := printf "%s/Items?IncludeItemTypes=AudioBook&Recursive=true&Limit=0&EnableTotalRecordCount=true" $url -}}
-              {{- $audiobooksData := newRequest $audiobooksUrl | withHeader "X-Api-Key" $key | getResponse -}}
+              {{- $audiobooksData := newRequest $audiobooksUrl | withHeader "Authorization" $auth | getResponse -}}
 
               {{- if and (eq $jellyfinData.Response.StatusCode 200) (eq $audiobooksData.Response.StatusCode 200) -}}
                 <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.5rem; text-align: center;">
