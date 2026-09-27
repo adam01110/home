@@ -343,6 +343,11 @@
               description: Applies database migrations for NCPS.
               icon: /assets/icons/ncps.svg?completed
               hide: false
+            tangled-knot-announce-1:
+              name: Knot announce
+              description: Periodically requests Knot crawls by the Tangled mirror.
+              icon: /assets/icons/dolly.svg
+              hide: false
             pds-redis-1:
               name: Redis for PDS
               description: In-memory data store used by the AT Protocol personal data server.
