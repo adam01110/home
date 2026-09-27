@@ -15,9 +15,9 @@
             {{- if or (eq $url "") (eq $key "") -}}
               <p>Error: The URL or API key was not configured in the widget options.</p>
             {{- else -}}
-              {{- $countsUrl := printf "%s/emby/Items/Counts" $url -}}
+              {{- $countsUrl := printf "%s/Items/Counts" $url -}}
               {{- $jellyfinData := newRequest $countsUrl | withHeader "X-Api-Key" $key | getResponse -}}
-              {{- $audiobooksUrl := printf "%s/emby/Items?IncludeItemTypes=AudioBook&Recursive=true&Limit=0&EnableTotalRecordCount=true" $url -}}
+              {{- $audiobooksUrl := printf "%s/Items?IncludeItemTypes=AudioBook&Recursive=true&Limit=0&EnableTotalRecordCount=true" $url -}}
               {{- $audiobooksData := newRequest $audiobooksUrl | withHeader "X-Api-Key" $key | getResponse -}}
 
               {{- if and (eq $jellyfinData.Response.StatusCode 200) (eq $audiobooksData.Response.StatusCode 200) -}}
@@ -48,7 +48,7 @@
                   </div>
                 </div>
               {{- else -}}
-                <p>Failed to fetch Jellyfin library counts.</p>
+                <p>Failed to fetch Jellyfin library counts (Counts: {{ $jellyfinData.Response.StatusCode }}, Audiobooks: {{ $audiobooksData.Response.StatusCode }}).</p>
               {{- end -}}
             {{- end -}}
 
