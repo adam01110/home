@@ -229,6 +229,7 @@ body:has(.docker-container > .shrink-0:first-child.popover-active) > .popover-co
     [href^="https://authentik."],
     [href^="https://copyparty."],
     [href^="https://excalidash."],
+    [href^="https://chat."],
     [href^="https://speedtest."],
     [href^="https://beszel."],
     [href^="https://shelfmark."],
@@ -422,6 +423,10 @@ body:has(.docker-container > .shrink-0:first-child.popover-active) > .popover-co
 
 .monitor-site:has(a[href^="https://excalidash."]) {
   --service-tooltip: "Collaborative virtual whiteboard for diagrams and sketches.";
+}
+
+.monitor-site:has(a[href^="https://chat."]) {
+  --service-tooltip: "Chat interface for hosted open AI models.";
 }
 
 .monitor-site:has(a[href^="https://speedtest."]) {
