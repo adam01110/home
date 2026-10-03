@@ -421,6 +421,10 @@ body:has(.docker-container > .shrink-0:first-child.popover-active) > .popover-co
   --service-tooltip: "Web file browser for uploads, downloads, and sharing.";
 }
 
+.monitor-site:has(a[href^="https://metamcp."]) {
+  --service-tooltip: "MCP server aggregation, routing, and management.";
+}
+
 .monitor-site:has(a[href^="https://excalidash."]) {
   --service-tooltip: "Collaborative virtual whiteboard for diagrams and sketches.";
 }

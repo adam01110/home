@@ -114,6 +114,9 @@
           cache: 8m
           title: Other
           sites:
+            - title: MetaMCP
+              url: https://metamcp.${GROUND_DOMAIN}
+              icon: /assets/icons/metamcp.png
             - title: Excalidash
               url: https://excalidash.${GROUND_DOMAIN}
               icon: /assets/icons/excalidash.svg
