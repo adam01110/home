@@ -112,17 +112,22 @@
 
         - type: monitor
           cache: 8m
-          title: Other
+          title: Development
           sites:
-            - title: MetaMCP
-              url: https://metamcp.${GROUND_DOMAIN}
-              icon: /assets/icons/metamcp.png
             - title: Excalidash
               url: https://excalidash.${GROUND_DOMAIN}
               icon: /assets/icons/excalidash.svg
             - title: ChartDB
               url: https://chartdb.${GROUND_DOMAIN}
               icon: /assets/icons/chartdb.png
+
+        - type: monitor
+          cache: 8m
+          title: Other
+          sites:
+            - title: MetaMCP
+              url: https://metamcp.${GROUND_DOMAIN}
+              icon: /assets/icons/metamcp.png
             - title: Open WebUI
               url: https://chat.${GROUND_DOMAIN}
               icon: /assets/icons/openwebui.svg
