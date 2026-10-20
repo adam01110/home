@@ -120,6 +120,9 @@
             - title: Excalidash
               url: https://excalidash.${GROUND_DOMAIN}
               icon: /assets/icons/excalidash.svg
+            - title: ChartDB
+              url: https://chartdb.${GROUND_DOMAIN}
+              icon: /assets/icons/chartdb.png
             - title: Open WebUI
               url: https://chat.${GROUND_DOMAIN}
               icon: /assets/icons/openwebui.svg
