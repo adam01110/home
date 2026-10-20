@@ -120,6 +120,9 @@
             - title: ChartDB
               url: https://chartdb.${GROUND_DOMAIN}
               icon: /assets/icons/chartdb.png
+            - title: Penpot
+              url: https://penpot.${GROUND_DOMAIN}
+              icon: /assets/icons/penpot.svg
 
         - type: monitor
           cache: 8m

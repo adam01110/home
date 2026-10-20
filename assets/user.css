@@ -426,6 +426,10 @@ body:has(.docker-container > .shrink-0:first-child.popover-active) > .popover-co
   --service-tooltip: "Create, edit, and share database schema diagrams.";
 }
 
+.monitor-site:has(a[href^="https://penpot."]) {
+  --service-tooltip: "Collaborative interface design and prototyping.";
+}
+
 .monitor-site:has(a[href^="https://metamcp."]) {
   --service-tooltip: "MCP server aggregation, routing, and management.";
 }
