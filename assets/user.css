@@ -231,6 +231,7 @@ body:has(.docker-container > .shrink-0:first-child.popover-active) > .popover-co
     [href^="https://excalidash."],
     [href^="https://chartdb."],
     [href^="https://penpot."],
+    [href^="https://metamcp."],
     [href^="https://chat."],
     [href^="https://speedtest."],
     [href^="https://beszel."],
