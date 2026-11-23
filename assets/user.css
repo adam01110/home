@@ -492,6 +492,10 @@ body:has(.docker-container > .shrink-0:first-child.popover-active) > .popover-co
   --service-tooltip: "Playback analytics for Jellyfin.";
 }
 
+.monitor-site:has(a[href^="https://multi-scrobbler."]) {
+  --service-tooltip: "Scrobbles Spotify and Jellyfin plays to multiple clients.";
+}
+
 .monitor-site:has(a[href^="https://fileflows."]) {
   --service-tooltip: "Automated media file conversion, remuxing, and cleanup.";
 }

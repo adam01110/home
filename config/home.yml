@@ -58,6 +58,12 @@
               basic-auth:
                 username: glance
                 password: ${AUTHENTIK_PASSWORD}
+            - title: Multi-Scrobbler
+              url: https://multi-scrobbler.${GROUND_DOMAIN}
+              icon: /assets/icons/multi-scrobbler.svg
+              basic-auth:
+                username: glance
+                password: ${AUTHENTIK_PASSWORD}
 
         - type: monitor
           cache: 8m
