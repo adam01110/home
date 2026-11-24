@@ -252,7 +252,8 @@ body:has(.docker-container > .shrink-0:first-child.popover-active) > .popover-co
     [href^="https://knot."],
     [href^="https://spindle."],
     [href^="https://hold."],
-    [href^="https://ncps."]
+    [href^="https://ncps."],
+    [href^="https://multi-scrobbler."]
   )
 ) {
   --access-icon: url("/assets/icons/status/warning.svg");
